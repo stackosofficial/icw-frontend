@@ -1,0 +1,93 @@
+
+.letterContainer {
+    background-color: white;
+}
+
+.letterForm {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+.card {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    font-family: Franklin Gothic Demi Cond;
+}
+
+.title {
+    color: black;
+    font-size: 30px;
+    width: 70%;
+    text-align: center;
+    font-size: 40px;
+}
+
+.description {
+    text-align: center;
+}
+
+.enterFieldContainer {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.enterField {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: center;
+}
+
+.enterInput {
+    width: 60%;
+}
+
+.enterButton {
+    margin-left: 10px;
+}
+
+.lineContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.captchaContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.validateContainer {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 15px;
+    padding-top: 10px;
+    font-family: Franklin Gothic Demi Cond;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.successMessage {
+    color: green;
+}

@@ -1,0 +1,32 @@
+
+.footerSection {
+    background-color: gray;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.footerCard {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.footerText {
+    color: black;
+    font-family: Franklin Gothic Demi Cond;
+    font-size: 15px;
+    vertical-align: center;
+}
+
+.footerTwitterContainer {
+    width: 100%;
+    vertical-align: center;
+    display: flex;
+    justify-content:center;
+}
+
+.footerTwitterImage {
+    width: 30px;
+    height: 30px;
+}

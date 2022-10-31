@@ -1,0 +1,61 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.globalInput {
+  height: 32px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(8, 8, 8, 0.16) 0px 0px 0px 1px, rgba(8, 8, 8, 0.08) 0px 2px 5px 0px;
+  border: 0px none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.globalButton {
+  border: 0px none;
+  height: 32px;
+  cursor: pointer;
+  background: black;
+  color: white;
+  text-align: left;
+  outline: none;
+  font-weight: bold;
+  padding: 0px 12px;
+  height: 32px;
+}
+
+.globalButton:hover {
+  background-color: grey;
+}
+
+.globalButton:disabled {
+  background-color: grey;
+}
+
+.globalEndLine {
+  border-bottom: 1px solid black;
+  width: 50%;
+}

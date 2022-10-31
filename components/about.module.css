@@ -1,0 +1,37 @@
+
+.aboutSection {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 30px;
+    /* padding-bottom: 30px; */
+}
+
+.aboutTitle {
+    color: gray;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-align: center;
+    width: 100%;
+}
+
+.textContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.aboutText {
+    color: gray;
+    font-size: 25px;
+    width: 80%;
+    text-align: center;
+}
+
+.lineContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}

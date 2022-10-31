@@ -1,0 +1,134 @@
+
+.tableSection {
+    /* display: flex;
+    justify-content: center;*/
+    background-color: rgba(255, 35, 80, 0.8); 
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.searchBar {
+    width: 20%;
+}
+
+.tableContainer {
+    display: flex;
+    justify-content: center;
+    /* width: 80%; */
+}
+
+.tableTitleContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.addEventContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tableTitle {
+    font-family: Franklin Gothic Demi Cond;
+    color: white;
+    font-size: 40px;
+}
+.table {
+    display: flex;
+    flex-direction: column;
+    font-family: Franklin Gothic Demi Cond;
+    /* padding-left: 10%; */
+}
+
+.tableSize {
+    width: 70%;
+}
+
+.tableHeader, .tableRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.tableHeader {
+    color: white;
+}
+
+.tableRow {
+    color: white;
+    font-family: Franklin Gothic Demi Cond;
+    padding-bottom: 12px;
+    border-top: 2px solid white;
+    text-decoration: none;
+}
+
+.tableRow:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+
+.dateCell {
+    width: 20%;
+    font-size: 22px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(40, 40, 40, 1);;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.venueCell {
+    width: 20%;
+}
+
+.nameCell {
+    width: 60%;
+    padding-left: 50px;
+}
+
+
+.eventContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.eventCard {
+    width: 20%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    padding: 20px 40px 20px 40px;
+}
+
+.eventCard:hover {
+    text-decoration: none;
+}
+
+.eventDateContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.eventDate {
+    font-size: 30px;
+    text-align: center;
+}
+
+.eventName {
+    text-align: center;
+    font-weight: bold;
+}
+
+.eventContent {
+    align-items: flex-end;
+}

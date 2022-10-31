@@ -1,0 +1,100 @@
+
+.eventSection {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.eventCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Franklin Gothic Demi Cond;
+    padding: 20px;
+}
+
+.eventCardTitle {
+    text-align: center;
+    font-size: 40px;
+}
+
+.eventForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.eventFieldList {
+    display: flex;
+    flex-direction: column;
+    color: gray;
+    font-size: 23px;
+}
+
+.eventField {
+    display: flex;
+}
+
+.eventFieldLabel {
+    width: 80px;
+}
+
+.eventFieldInputContainer {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.eventFieldInput {
+    height: 36px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(8, 8, 8, 0.16) 0px 0px 0px 1px, rgba(8, 8, 8, 0.08) 0px 2px 5px 0px;
+    border: 0px none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.eventSubmitButton {
+    border: 0px none;
+    height: 32px;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    /* background: rgb(82, 113, 255); */
+    background: black;
+    color: white;
+    text-align: left;
+    outline: none;
+    font-weight: bold;
+    padding: 0px 12px;
+    height: 32px;
+}
+
+.validateContainer {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 15px;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.successMessage {
+    color: green;
+}
+
+.captchaContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.endLine {
+    width: 100%;
+}
