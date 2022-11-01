@@ -23,7 +23,7 @@ export default function NewsletterValidation() {
         console.log("useEffect token: ", token);
 
         setSent(true);
-        axios.post(`http://localhost:3000/newsletter/validation/${token}`,{})
+        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/newsletter/validation/${token}`,{})
         .then((res) => {
             if(res && res.data) {
                 if(res.data.success) {

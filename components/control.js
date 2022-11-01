@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './control.module.css'
 import { useRouter } from 'next/router';
 
-const URL = 'http://localhost:3000/admin';
 export default function Control()
 {
     const [events, setEvents] = useState([]);
@@ -72,8 +71,7 @@ export default function Control()
 
     const getAllEvents = () => {
         setSaveDisabled(true);
-        axios.get(URL).then((res) => {
-            console.log("events: ",JSON.stringify(res.data));
+        axios.get(`${process.env.NEXT_PUBLIC_BE_URL}/admin`).then((res) => {
             setEventsFunc(res.data);
             setSaveDisabled(false);
         })
@@ -85,7 +83,6 @@ export default function Control()
     }
 
     const callModifyAPI = () => {
-        console.log("eventChanges: ", eventChanges);
         if(!Object.keys(eventChanges.updatedEvents).length
           &&  !Object.keys(eventChanges.addedEvents).length
           && !eventChanges.deletedEvents.length
@@ -98,7 +95,7 @@ export default function Control()
         setError('');
         setSaveDisabled(true);
 
-        axios.post(URL, eventChanges)
+        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/admin`, eventChanges)
         .then((res) => {
             setSaveDisabled(false);
             if(res && res.data && res.data.success) {

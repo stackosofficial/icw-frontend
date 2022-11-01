@@ -6,9 +6,6 @@ import {useState, useRef} from 'react';
 import axios from 'axios';
 import { categoriesList } from './common';
 
-const USERURL = 'http://localhost:3000/users';
-
-
 export default function EventForm () {
 
     const [event, setEvent] = useState({});
@@ -92,7 +89,7 @@ export default function EventForm () {
         setSuccessMessage('');
         setDisabled(true);
 
-        axios.post(`${USERURL}`, {
+        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/users`, {
             token,
             event,
         }).then((res) => {

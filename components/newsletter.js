@@ -42,12 +42,12 @@ export default function Newsletter () {
         setSuccess(false);
         setErrorMessage('');
 
-        axios.post(`http://localhost:3000/newsletter`, {
+        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/newsletter`, {
             ...userData,
             token
         })
         .then((res) => {
-            setDisabled(true);
+            setDisabled(false);
             if(res && res.data) {
                 if(res.data.success) {
                     setSuccess(true);
@@ -67,7 +67,7 @@ export default function Newsletter () {
             }
         })
         .catch((err) => {
-            setDisabled(true);
+            setDisabled(false);
             setErrorMessage('Failed to send email.');
         });
     }

@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
-const URL = 'http://localhost:3000/users';
-
 export default function EventTable () {
 
     const [eventList, setEventList] = useState();
@@ -12,7 +10,7 @@ export default function EventTable () {
 
     useEffect(() => {
         console.log("calling axios");
-        axios.get(URL).then((res) => {
+        axios.get(`${process.env.NEXT_PUBLIC_BE_URL}/users`).then((res) => {
             console.log("events: ",JSON.stringify(res.data));
             setEventList(res.data);
             setFilteredEventList(res.data);

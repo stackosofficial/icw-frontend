@@ -4,7 +4,6 @@ import styles from './control.module.css'
 import { useRouter } from 'next/router';
 import { categoriesList } from '../../components/common';
 
-const URL = 'http://localhost:3000/admin';
 export default function Control()
 {
     const [events, setEvents] = useState([]);
@@ -76,7 +75,7 @@ export default function Control()
 
     const getAllEvents = () => {
         setSaveDisabled(true);
-        axios.get(URL).then((res) => {
+        axios.get(`${process.env.NEXT_PUBLIC_BE_URL}/admin`).then((res) => {
             console.log("events: ",JSON.stringify(res.data));
             setEventsFunc(res.data);
             setSaveDisabled(false);
