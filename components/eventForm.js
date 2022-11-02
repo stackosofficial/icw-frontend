@@ -6,9 +6,9 @@ import {useState, useRef} from 'react';
 import axios from 'axios';
 import { categoriesList } from './common';
 
-export default function EventForm () {
+export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
 
-    const [event, setEvent] = useState({});
+    var [event, setEvent] = useState({});
     const [isDisabled, setDisabled] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [successMessage, setSuccessMessage] = useState('');
@@ -69,7 +69,6 @@ export default function EventForm () {
         event = {...event, ...change};
         setEvent(event);
 
-        console.log("checking event changes", JSON.stringify(event), new Date('2022-10-29T06:00'));
         if(event.name && event.link && event.from && event.to && event.createdByEmail) {
             setDisabled(false);
         }
@@ -89,7 +88,7 @@ export default function EventForm () {
         setSuccessMessage('');
         setDisabled(true);
 
-        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/users`, {
+        axios.post(`${NEXT_PUBLIC_BE_URL}/users`, {
             token,
             event,
         }).then((res) => {
@@ -211,7 +210,8 @@ export default function EventForm () {
                     <div className={styles.captchaContainer}>
                         <div>
                             <ReCAPTCHA
-                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                sitekey={siteKey}
+                                // sitekey={publicRuntimeConfig.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                                 ref={captchaRef}
                             />
                         </div>

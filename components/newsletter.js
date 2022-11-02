@@ -4,11 +4,12 @@ import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 
-export default function Newsletter () {
+
+export default function Newsletter ({siteKey, NEXT_PUBLIC_BE_URL}) {
     const captchaRef = useRef(null)
     const [isSuccess, setSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [userData, setUserData] = useState({});
+    var [userData, setUserData] = useState({});
     const [isDisabled, setDisabled] = useState(true);
 
     const onChange = (userChange) => {
@@ -42,7 +43,7 @@ export default function Newsletter () {
         setSuccess(false);
         setErrorMessage('');
 
-        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/newsletter`, {
+        axios.post(`${NEXT_PUBLIC_BE_URL}/newsletter`, {
             ...userData,
             token
         })
@@ -95,7 +96,7 @@ export default function Newsletter () {
                     <div className={styles.captchaContainer}>
                         <div>
                         <ReCAPTCHA
-                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                            sitekey={siteKey}
                             ref={captchaRef}
                         />
                         </div>

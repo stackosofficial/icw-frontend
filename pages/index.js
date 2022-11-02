@@ -10,58 +10,28 @@ import MediaPartners from '../components/partners'
 import Footer from '../components/footer';
 import utilStyles from '../styles/utils.module.css';
 import landscapePic from '../public/images/retrolandscape.webp';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 
-const data = [
-  {
-      name: 'Bangalore Bitcoin meetup #7',
-      link: 'www.meetup.com',
-      venue: 'Bangalore, India',
-      day: '22 Oct',
-      from: '2.00 pm',
-      to: '6.00 pm',
-      status: 'W'
-  },
-  {
-      name: 'ABGA Blockchain Gaming 2022 Day 1',
-      venue: 'Hyderabad, India',
-      link: 'form.typeform.com',
-      day: '22 Oct',
-      timing: '2.00 pm - 6.00 pm'
-  },
-  {
-      name: 'Web3 Disrupt',
-      venue: 'IBA Karachi, Pakistan',
-      link: 'wev3disrupt.io',
-      day: '22 Oct',
-      timing: '2.00 pm - 6.00 pm'
-  },
-  {
-      name: 'Supermeet Pune',
-      venue: 'Chennai, India',
-      link: 'web3conclave.com',
-      day: '22 Oct',
-      timing: '2.00 pm - 6.00 pm'
-  },
-];
 
-export default function Home() {
+
+
+export default function Home({NEXT_PUBLIC_BE_URL, NEXT_PUBLIC_RECAPTCHA_SITE_KEY}) {
+
 
   return (
     <div>
       <div className={utilStyles.backgroundImage}>
         <Image
           src={landscapePic}
+          fill={true}
           alt="Picture of landscape"
         />
       </div>
       <Navbar/>
       <Banner/>
       <About/>
-      <Newsletter/>
-      <EventTable/>
-      <EventForm/>
+      <Newsletter siteKey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY} NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
+      <EventTable NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
+      <EventForm siteKey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY} NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
       {/* <MediaPartners/> */}
       <Footer/>
     </div>

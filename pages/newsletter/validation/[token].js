@@ -3,14 +3,13 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 
-export default function NewsletterValidation() {
+export default function NewsletterValidation({NEXT_PUBLIC_BE_URL}) {
 
     const router = useRouter()
     const [response, setResponse] = useState('');
     const [isSent, setSent] = useState(false);
 
     const { token } = router.query;
-    console.log("token: ", token);
 
     useEffect(() => {
         const { token } = router.query;
@@ -20,10 +19,8 @@ export default function NewsletterValidation() {
         if(isSent)
             return;
         
-        console.log("useEffect token: ", token);
-
         setSent(true);
-        axios.post(`${process.env.NEXT_PUBLIC_BE_URL}/newsletter/validation/${token}`,{})
+        axios.post(`${NEXT_PUBLIC_BE_URL}/newsletter/validation/${token}`,{})
         .then((res) => {
             if(res && res.data) {
                 if(res.data.success) {

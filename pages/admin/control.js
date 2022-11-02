@@ -3,16 +3,30 @@ import React, { useEffect, useState } from 'react';
 import styles from './control.module.css'
 import { useRouter } from 'next/router';
 import { categoriesList } from '../../components/common';
+import Modal from 'react-modal';
 
-export default function Control()
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      };
+      
+
+export default function Control({NEXT_PUBLIC_BE_URL})
 {
-    const [events, setEvents] = useState([]);
+    var [events, setEvents] = useState([]);
     const [isSuccess, setSuccess] = useState(false);
     const [isError, setError] = useState('');
     const [changeID, setChangeID] = useState(0);
-    const [filterOptions, setFilterOptions] = useState({});
-    const [filteredEvents, setFilteredEvents] = useState([]);
+    var [filterOptions, setFilterOptions] = useState({});
+    var [filteredEvents, setFilteredEvents] = useState([]);
     const [isSaveDisabled, setSaveDisabled] = useState(false);
+    const [delModalData, setDelModal] = useState({});
 
     const router = useRouter();
     const [eventChanges, setEventChanges] = useState({
@@ -75,7 +89,7 @@ export default function Control()
 
     const getAllEvents = () => {
         setSaveDisabled(true);
-        axios.get(`${process.env.NEXT_PUBLIC_BE_URL}/admin`).then((res) => {
+        axios.get(`${NEXT_PUBLIC_BE_URL}/admin`).then((res) => {
             console.log("events: ",JSON.stringify(res.data));
             setEventsFunc(res.data);
             setSaveDisabled(false);
@@ -84,6 +98,7 @@ export default function Control()
             setSaveDisabled(false);
             setSuccess(false);
             setError('Error duing fetching event data');
+            console.log("error found: "+err);
         });
     }
 
@@ -101,7 +116,7 @@ export default function Control()
         setError('');
         setSaveDisabled(true);
 
-        axios.post(URL, eventChanges)
+        axios.post(`${NEXT_PUBLIC_BE_URL}/admin`, eventChanges)
         .then((res) => {
             setSaveDisabled(false);
             if(res && res.data && res.data.success) {
@@ -153,14 +168,14 @@ export default function Control()
         setEventChanges({...eventChanges});
     }
 
-    const deleteEvent = (eventIndex, event) => {
+    const deleteEvent = (eventIndex, event, reason) => {
         const eID = event._id;
 
         if(eventChanges.addedEvents[eID]) {
             delete eventChanges.addedEvents[eID];
         }
         else {
-            eventChanges.deletedEvents.push(eID);
+            eventChanges.deletedEvents.push({eventID: eID, reason});
         }
 
         if(eventChanges.updatedEvents[eID]) {
@@ -188,6 +203,23 @@ export default function Control()
         setEventsFunc([...events]);
     }
 
+    const deleteModalOpen = (event, eventIndex) => {
+        setDelModal({isOpen: true, event, eventIndex});
+    }
+
+    const setDeleteReason = (reason) => {
+        setDelModal({...delModalData, reason});
+    }
+
+    const deleteModalClickYes = () => {
+        deleteEvent(delModalData.eventIndex, delModalData.event, delModalData.reason);
+        setDelModal({});
+    }
+
+    const deleteModalClickNo = () => {
+        setDelModal({});
+    }
+
     useEffect(() => {
         getAllEvents()
     }, []);
@@ -197,7 +229,9 @@ export default function Control()
             return (
                 <tr className={styles.tableRow} key={index}>
                     <td className={styles.tableCell}>
-                        <button onClick={() =>deleteEvent(index, event)}>DEL</button>
+                        {/* <button onClick={() =>deleteEvent(index, event)}>DEL</button> */}
+                        {/* deleteModalOpen */}
+                        <button onClick={() =>deleteModalOpen(event, index)}>DEL</button>
                     </td>
                     <td className={styles.tableCell}>
                         {index + 1}
@@ -246,7 +280,7 @@ export default function Control()
                             {
                                 categoriesList.map((category) => {
                                     return (
-                                        <option value={category}>{category}</option>
+                                        <option key={category} value={category}>{category}</option>
                                     );
                                 })
                             }
@@ -275,86 +309,103 @@ export default function Control()
 
     console.log('restart');
     return (
-        <div className={styles.section}>
-            <div>
-                <button onClick={callModifyAPI} disabled={isSaveDisabled}>SAVE</button>
-                {
-                    isError ?
-                        <span className={styles.failed}>{isError}</span>
-                    : !isError && isSuccess? 
-                    <span className={styles.saved}> Saved</span>
-                    : ''
-                }
-            </div>
-            <div>
-                <table className={styles.table}>
-                    <tr className={styles.tableRow}>
-                        <th className={styles.tableCell}>DEL</th>
-                        <th className={styles.tableCell}>ID</th>
-                        <th className={styles.tableCell}>
-                            Name
-                            <input type='text'
-                                onChange={(e) => filterEvents({name: e.target.value})}
-                                />
-                            </th>
-                        <th className={styles.tableCell}>
-                            Link
-                            <input type='text'
-                                onChange={(e) => filterEvents({link: e.target.value})}
-                                />
-                        </th>
-                        <th className={styles.tableCell}>
-                            From(YYYY-MM-DDtHH-MM)
-                            <input type='text'
-                                onChange={(e) => filterEvents({from: e.target.value})}
-                                />
-                        </th>
-                        <th className={styles.tableCell}>
-                            To(YYYY-MM-DDtHH-MM)
-                            <input type='text'
-                                onChange={(e) => filterEvents({to: e.target.value})}
-                                />
-                        </th>
-                        <th className={styles.tableCell}>Venue
-                            <input type='text'
-                                onChange={(e) => filterEvents({venue: e.target.value})}
-                                />
-                        </th>
-                        <th className={styles.tableCell}>CreatedBy
-                            <input type='text'
-                                onChange={(e) => filterEvents({createdByEmail: e.target.value})}
-                                />
-                        </th>
-                        <th className={styles.tableCell}>
-                            Category
-                            <input type='text'
-                                onChange={(e) => filterEvents({category: e.target.value})}
-                            />
-                        </th>
-                        <th className={styles.tableCell}>
-                            senderIP
-                            <input type='text'
-                                onChange={(e) => filterEvents({senderIP: e.target.value})}
-                            />
-                        </th>
-                        <th className={styles.tableCell}>
-                            Status
-                            <input type='text'
-                                onChange={(e) => filterEvents({status: e.target.value})}
-                                />
-                        </th>
-                    </tr>
-                    <tbody>
-                        {
-                            renderEvents().map((event)=>
-                            event)
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div>
-                <button onClick={addEvent}>ADD EVENT</button>
+        <div>
+            {
+                <Modal
+                    isOpen={delModalData.isOpen}
+                    style={customStyles}>
+                    <div>
+                        <div>Do you want to delete?</div>
+                        <div>
+                            <input type='text' onChange={(e) => setDeleteReason(e.target.value)}/>
+                            <button onClick={deleteModalClickYes}>YES</button>
+                            <button onClick={deleteModalClickNo}>NO</button>
+                        </div>
+                    </div>
+                </Modal>
+            }
+            <div className={styles.section}>
+                <div>
+                    <button onClick={callModifyAPI} disabled={isSaveDisabled}>SAVE</button>
+                    {
+                        isError ?
+                            <span className={styles.failed}>{isError}</span>
+                        : !isError && isSuccess? 
+                        <span className={styles.saved}> Saved</span>
+                        : ''
+                    }
+                </div>
+                <div>
+                    <table className={styles.table}>
+                        <tbody>
+                            <tr className={styles.tableRow}>
+                                <th className={styles.tableCell}>DEL</th>
+                                <th className={styles.tableCell}>ID</th>
+                                <th className={styles.tableCell}>
+                                    Name
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({name: e.target.value})}
+                                        />
+                                    </th>
+                                <th className={styles.tableCell}>
+                                    Link
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({link: e.target.value})}
+                                        />
+                                </th>
+                                <th className={styles.tableCell}>
+                                    From(YYYY-MM-DDtHH-MM)
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({from: e.target.value})}
+                                        />
+                                </th>
+                                <th className={styles.tableCell}>
+                                    To(YYYY-MM-DDtHH-MM)
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({to: e.target.value})}
+                                        />
+                                </th>
+                                <th className={styles.tableCell}>Venue
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({venue: e.target.value})}
+                                        />
+                                </th>
+                                <th className={styles.tableCell}>CreatedBy
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({createdByEmail: e.target.value})}
+                                        />
+                                </th>
+                                <th className={styles.tableCell}>
+                                    Category
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({category: e.target.value})}
+                                    />
+                                </th>
+                                <th className={styles.tableCell}>
+                                    senderIP
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({senderIP: e.target.value})}
+                                    />
+                                </th>
+                                <th className={styles.tableCell}>
+                                    Status
+                                    <input type='text'
+                                        onChange={(e) => filterEvents({status: e.target.value})}
+                                        />
+                                </th>
+                            </tr>
+                            {
+                                renderEvents().map((event)=>
+                                event)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <button onClick={addEvent}>ADD EVENT</button>
+                </div>
             </div>
         </div>
+        
     );
 }

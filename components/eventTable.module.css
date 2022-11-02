@@ -86,11 +86,13 @@
 
 .venueCell {
     width: 20%;
+    margin: auto;
 }
 
 .nameCell {
     width: 60%;
     padding-left: 50px;
+    margin: auto;
 }
 
 

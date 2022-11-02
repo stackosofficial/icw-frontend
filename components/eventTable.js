@@ -3,15 +3,13 @@ import classNames from 'classnames';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
-export default function EventTable () {
+export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
 
     const [eventList, setEventList] = useState();
     const [filteredEventList, setFilteredEventList] = useState();
 
     useEffect(() => {
-        console.log("calling axios");
-        axios.get(`${process.env.NEXT_PUBLIC_BE_URL}/users`).then((res) => {
-            console.log("events: ",JSON.stringify(res.data));
+        axios.get(`${NEXT_PUBLIC_BE_URL}/users`).then((res) => {
             setEventList(res.data);
             setFilteredEventList(res.data);
         })
@@ -38,7 +36,6 @@ export default function EventTable () {
 
     const getDays = (dateStr) => {
         const days = (new Date(dateStr)).getDate();
-        console.log("days: ", days, dateStr, new Date(dateStr), (new Date(dateStr)).getDate());
         return days + '';
     }
 
@@ -59,7 +56,6 @@ export default function EventTable () {
 
     const compareField = (filt, val) => {
         const matches = val.toLowerCase().match(filt.toLowerCase());
-        console.log("compareField: ", val.toLowerCase(), filt.toLowerCase(), JSON.stringify(matches), matches && matches.length > 0);
        return  matches && matches.length > 0;
     }
 
