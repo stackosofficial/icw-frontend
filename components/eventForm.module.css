@@ -4,32 +4,40 @@
     justify-content: center;
     background-color: white;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
 .eventCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
     padding: 20px;
+}
+
+.eventCardCenter {
+    display: flex;
+    justify-content: center;
 }
 
 .eventCardTitle {
     text-align: center;
+    font-weight: bold;
     font-size: 40px;
+    color: rgba(27, 27, 27, 0.95);
 }
 
 .eventForm {
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
 }
 
 .eventFieldList {
     display: flex;
     flex-direction: column;
     color: gray;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .eventField {
@@ -57,7 +65,7 @@
 .buttonContainer {
     display: flex;
     justify-content: center;
-    padding-top: 10px;
+    padding-top: 16px;
 }
 
 .eventSubmitButton {
@@ -71,7 +79,7 @@
     text-align: left;
     outline: none;
     font-weight: bold;
-    padding: 0px 12px;
+    padding: 10px 12px;
     height: 32px;
 }
 
@@ -80,6 +88,7 @@
     justify-content: center;
     color: red;
     font-size: 15px;
+    padding-top: 15px;
 }
 
 .errorMessage {
@@ -87,7 +96,7 @@
 }
 
 .successMessage {
-    color: green;
+    color: rgba(27, 27, 27, 0.95);
 }
 
 .captchaContainer {

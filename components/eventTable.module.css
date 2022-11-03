@@ -2,7 +2,7 @@
 .tableSection {
     /* display: flex;
     justify-content: center;*/
-    background-color: rgba(255, 35, 80, 0.8); 
+    background-color: rgba(27, 27, 27, 0.87); 
     padding-top: 20px;
     padding-bottom: 40px;
 }
@@ -36,14 +36,15 @@
 }
 
 .tableTitle {
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
+    font-weight: bold;
     color: white;
     font-size: 40px;
 }
 .table {
     display: flex;
     flex-direction: column;
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
     /* padding-left: 10%; */
 }
 
@@ -63,9 +64,8 @@
 
 .tableRow {
     color: white;
-    font-family: Franklin Gothic Demi Cond;
-    padding-bottom: 12px;
-    border-top: 2px solid white;
+    margin-bottom: 40px;
+    border-top: 2px solid #aaff00;
     text-decoration: none;
 }
 
@@ -77,22 +77,28 @@
 
 .dateCell {
     width: 20%;
-    font-size: 22px;
-    background-color: rgba(255, 255, 255, 1);
+    font-size: 28px;
+    font-family: 'Enriqueta';
+    font-weight: bold;
+    /* background-color: rgba(255, 255, 255, 1); */
+    background-color: #aaff00;
     color: rgba(40, 40, 40, 1);;
     text-align: right;
     padding-right: 10px;
 }
 
-.venueCell {
+.timeCell {
+    color: #aaff00;
     width: 20%;
     margin: auto;
+    font-size: 16px;
 }
 
 .nameCell {
     width: 60%;
-    padding-left: 50px;
+    padding-left: 15px;
     margin: auto;
+    font-family: 'Avenir-light';
 }
 
 

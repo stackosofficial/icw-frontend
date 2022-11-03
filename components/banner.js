@@ -8,11 +8,14 @@ export default function Banner() {
             <div className={styles.container}>
                 <div className={styles.titleCard}>
                     <div className={styles.titleDate}>
-                        <div>26 Sep - 2 Oct 2022</div>
+                        <div>26th Nov - 4th Dec 2022</div>
+                    </div>
+                    <div className={styles.titleDate}>
+                        <div>Bangalore</div>
                     </div>
                     <div className={styles.title}>
                         <div className={styles.titleWord}>INDIA</div>
-                        <div className={styles.titleWord}>CRYPTO</div>
+                        <div className={styles.titleWord}>BLOCKCHAIN</div>
                         <div className={styles.titleWord}>WEEK</div>
                     </div>
                     <div className={styles.ownerLineContainer}>
@@ -21,12 +24,14 @@ export default function Banner() {
                     
                     <div className={styles.owner}>
                         <div className={styles.ownerText}>Powered by:</div>
-                        <Image
-                            src={tokenPic}
-                            width={192}
-                            height={48}
-                            alt="Picture of landscape"
-                        /> 
+                        <div className={styles.ownerImage}>
+                            <Image
+                                src={tokenPic}
+                                width={192}
+                                height={48}
+                                alt="Picture of landscape"
+                            /> 
+                        </div>
                     </div>
                 </div>
             </div>

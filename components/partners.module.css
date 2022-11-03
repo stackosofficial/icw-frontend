@@ -7,14 +7,18 @@
 .mediaCard {
     display: flex;
     justify-content: center;
-    padding: 60px;
+    padding-top: 10px;
+    padding-bottom: 60px;
+    /* padding: 60px; */
 }
 
 .mediaTitle {
     text-align: center;
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
+    font-weight: bold;
+    color: rgba(27, 27, 27, 0.95);
+    font-size: 26px;
     letter-spacing: 3px;
-    color: gray;
 }
 
 .mediaRow {

@@ -1,6 +1,6 @@
 
 .footerSection {
-    background-color: gray;
+    background-color:  rgba(27, 27, 27, 0.87);
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -13,8 +13,8 @@
 }
 
 .footerText {
-    color: black;
-    font-family: Franklin Gothic Demi Cond;
+    color: #aaff00;
+    font-family: 'Avenir';
     font-size: 15px;
     vertical-align: center;
 }
@@ -29,4 +29,8 @@
 .footerTwitterImage {
     width: 30px;
     height: 30px;
+}
+
+.stackLink {
+    color: white;
 }

@@ -1,0 +1,35 @@
+.signupBar {
+    display: flex;
+    justify-content: center;
+    background-color: #aaff00;
+}
+
+.signupMiddle {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+}
+
+/* .navCell {
+    padding-left: 20px;
+} */
+
+.buttonPadding {
+    margin-left: 20px;
+}
+
+.titleContainer {
+    text-align: center;
+    color: rgba(27, 27, 27, 0.95);
+    font-size: 26px;
+    font-family: 'Avenir';
+    font-weight: bold;
+    letter-spacing: 3px;
+}

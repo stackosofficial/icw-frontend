@@ -33,6 +33,21 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         let aTime = new Date(event.from);
         let bTime = new Date(event.to);
         const today = new Date();
+
+        if(event.name.length > 32) {
+            setErrorMessage("name should be less than 32 characters.");
+            return false;
+        }
+
+        if(event.venue && event.venue.length > 32) {
+            setErrorMessage("Venue should be less than 32 characters.");
+            return false;
+        }
+
+        if(event.createdByEmail.length > 254) {
+            setErrorMessage("Email length is too big.");
+        }
+
         if(aTime < today) {
             setErrorMessage("From time cannot be older than today.");
             return false;
@@ -92,24 +107,26 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             token,
             event,
         }).then((res) => {
-
-            setDisabled(false);
             if(res && res.data) {
                 if(res.data.success) {
                     event = {};
                     setEvent(event);
+                    setDisabled(true);
                     setSuccessMessage('Your event has been sent for approval!');
                 }
                 else {
                     if(res.data.reason) {
+                        setDisabled(false);
                         setErrorMessage('Event registration failed. Reason: ' + res.data.reason);
                     }
                     else {
+                        setDisabled(false);
                         setErrorMessage('Event registration failed.');
                     }
                 }
             }
             else {
+                setDisabled(false);
                 setErrorMessage('Event registration failed.');
             }
 
@@ -126,107 +143,109 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         <div className={styles.eventSection} id='event-register'>
             <div className={styles.eventCard}>
                 <div className={styles.eventCardTitle}>EVENT REGISTRATION</div>
-                <div className={styles.eventForm}>
-                    <div className={styles.eventFieldList}>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>Name: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <input type='text'
-                                    value={event.name ? event.name : ''}
-                                    onChange={(e) => onChange({name: e.target.value})}
-                                    className={styles.eventFieldInput}/>
+                <div className={styles.eventCardCenter}>
+                    <div className={styles.eventForm}>
+                        <div className={styles.eventFieldList}>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Name: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='text'
+                                        value={event.name ? event.name : ''}
+                                        onChange={(e) => onChange({name: e.target.value})}
+                                        className={styles.eventFieldInput}/>
+                                </div>
                             </div>
-                        </div>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>Link: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <input type='text'
-                                    value={event.link ? event.link : ''}
-                                    className={styles.eventFieldInput}
-                                    onChange={(e) => onChange({link: e.target.value})}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>From: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <input type='datetime-local'
-                                    value={event.from ? event.from : ''}
-                                    className={styles.eventFieldInput}
-                                    onChange={(e) => onChange({from: e.target.value})}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>To: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <input type='datetime-local'
-                                    disabled={!event.from}
-                                    value={event.to ? event.to : ''}
-                                    className={styles.eventFieldInput}
-                                    onChange={(e) => onChange({to: e.target.value})}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>Venue: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <input type='text'
-                                    value={event.venue ? event.venue : ''}
-                                    className={styles.eventFieldInput}
-                                    onChange={(e) => onChange({venue: e.target.value})}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>Email: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <input type='text'
-                                    value={event.createdByEmail ? event.createdByEmail : ''}
-                                    className={styles.eventFieldInput}
-                                    onChange={(e) => onChange({createdByEmail: e.target.value})}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.eventField}>
-                            <div className={styles.eventFieldLabel}>Category: </div>
-                            <div className={styles.eventFieldInputContainer}>
-                                <select name="category"
-                                        value={event.category ? event.category : ''}
-                                        onChange={(e) => onChange({category: e.target.value})}
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Link: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='text'
+                                        value={event.link ? event.link : ''}
                                         className={styles.eventFieldInput}
-                                    >
-                                    {
-                                        categoriesList.map((category) => {
-                                            return (
-                                                <option value={category}>{category}</option>
-                                            );
-                                        })
-                                    }
-                                </select>
+                                        onChange={(e) => onChange({link: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>From: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='datetime-local'
+                                        value={event.from ? event.from : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({from: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>To: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='datetime-local'
+                                        disabled={!event.from}
+                                        value={event.to ? event.to : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({to: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Venue: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='text'
+                                        value={event.venue ? event.venue : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({venue: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Email: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='text'
+                                        value={event.createdByEmail ? event.createdByEmail : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({createdByEmail: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Category: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <select name="category"
+                                            value={event.category ? event.category : ''}
+                                            onChange={(e) => onChange({category: e.target.value})}
+                                            className={styles.eventFieldInput}
+                                        >
+                                        {
+                                            categoriesList.map((category) => {
+                                                return (
+                                                    <option value={category}>{category}</option>
+                                                );
+                                            })
+                                        }
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.captchaContainer}>
-                        <div>
-                            <ReCAPTCHA
-                                sitekey={siteKey}
-                                // sitekey={publicRuntimeConfig.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                                ref={captchaRef}
-                            />
+                        <div className={styles.captchaContainer}>
+                            <div>
+                                <ReCAPTCHA
+                                    sitekey={siteKey}
+                                    // sitekey={publicRuntimeConfig.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                    ref={captchaRef}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.validateContainer}>
-                        {errorMessage ? <div className={styles.errorMessage}>{errorMessage}</div> : ''}
-                        {(!errorMessage) && successMessage ? <div className={styles.successMessage}>{successMessage}</div>: ''}
-                    </div>
-                    <div className={styles.buttonContainer}>
-                        <button
-                            type='button'
-                            className={classNames('globalButton')}
-                            disabled={isDisabled}
-                            onClick={onSubmit}
-                        >ENTER</button>
+                        <div className={styles.buttonContainer}>
+                            <button
+                                type='button'
+                                className={classNames('globalButton')}
+                                disabled={isDisabled}
+                                onClick={onSubmit}
+                            >SUBMIT</button>
+                        </div>
+                        <div className={styles.validateContainer}>
+                            {errorMessage ? <div className={styles.errorMessage}>{errorMessage}</div> : ''}
+                            {(!errorMessage) && successMessage ? <div className={styles.successMessage}>{successMessage}</div>: ''}
+                        </div>
                     </div>
                 </div>
                 <div className={styles.lineContainer}>

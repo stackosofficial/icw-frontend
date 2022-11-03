@@ -2,7 +2,8 @@
 .navbarSection {
     background-color: rgba(255, 255, 255, 1);
     color: grey;
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
+    font-weight: bold;
     display: flex;
     justify-content: center;
 }
@@ -10,8 +11,9 @@
 .navbarButton {
     padding: 10px;
     cursor: pointer;
+    color: rgba(27, 27, 27, 0.95);
 }
 
 .navbarButton:hover {
-    color: red;
+    color: grey;
 }

@@ -48,22 +48,25 @@ export default function Newsletter ({siteKey, NEXT_PUBLIC_BE_URL}) {
             token
         })
         .then((res) => {
-            setDisabled(false);
             if(res && res.data) {
                 if(res.data.success) {
                     setSuccess(true);
+                    setDisabled(true);
                     setUserData({});
                 }
                 else {
                     if(res.data.reason) {
+                        setDisabled(false);
                         setErrorMessage(res.data.reason);
                     }
                     else {
+                        setDisabled(false);
                         setErrorMessage('Failed to confirm your email.');
                     }
                 }
             }
             else {
+                setDisabled(false);
                 setErrorMessage('Failed to confirm your email.');
             }
         })
@@ -83,7 +86,7 @@ export default function Newsletter ({siteKey, NEXT_PUBLIC_BE_URL}) {
                         </div>
                     </div>
                     <div className={styles.description}>
-                        Get notified of the finest web3 meetups in India.
+                        Get notified of the finest Web3 meetups in India.
                     </div>
                     <div className={styles.enterFieldContainer}>
                         <input type='text'

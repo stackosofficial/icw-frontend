@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
 
     const [eventList, setEventList] = useState();
-    const [filteredEventList, setFilteredEventList] = useState();
+    var [filteredEventList, setFilteredEventList] = useState();
 
     useEffect(() => {
         axios.get(`${NEXT_PUBLIC_BE_URL}/users`).then((res) => {
@@ -19,7 +19,9 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
     }, []);
 
     const getHours = (dateStr) => {
-        const hours = new Date(dateStr).getHours();
+        var hours = new Date(dateStr).getHours();
+        if(hours > 12)
+            hours -= 12;
         if(hours < 10) {
             return '0' + hours;
         }
@@ -44,13 +46,15 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
         return month[new Date(dateStr).getMonth()];
     }
 
+    function getAMPM(date) {
+        var hours = (new Date(date)).getHours();
+        return hours >= 12 ? 'pm' : 'am';
+      }
+      
+
     const getLink = (event) => {
         if(!event.link)
             return '';
-        const match = event.link.match('https');
-        if(!match) {
-            return 'https://'+event.link;
-        }
         return event.link;
     }
 
@@ -94,8 +98,8 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
                             <a className={styles.tableRow} key={index} target="_blank" href={getLink(eventData)} rel="noopener noreferrer" title={getLink(eventData)}>
                                 <div className={styles.dateCell}>{`${getDays(eventData.from)} ${getMonth(eventData.from)}`}</div>
                                 <div className={styles.nameCell}>{eventData.name}</div>
-                                <div className={styles.venueCell}>{
-                                `${getHours(eventData.from)}:${getMinutes(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)}`}</div>
+                                <div className={styles.timeCell}>{
+                                `${getHours(eventData.from)}:${getMinutes(eventData.from)} ${getAMPM(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)} ${getAMPM(eventData.to)}`}</div>
                             </a>
                         ))
                     }
@@ -143,13 +147,13 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
                 {/* <div className={styles.addEventContainer}>
                     <button className={classNames('globalButton')} onClick={moveToRegister}>ADD YOUR EVENT</button>
                 </div> */}
-                <div className={styles.searchContainer}>
+                {/* <div className={styles.searchContainer}>
                     <input type='text'
                         className={classNames('globalInput', styles.searchBar)}
                         placeholder='Search'
                         onChange={(e) => filterEvents(e.target.value)}
                     />
-                </div>
+                </div> */}
                 
                 {
                     displayEvents()

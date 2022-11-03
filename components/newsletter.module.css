@@ -1,6 +1,7 @@
 
 .letterContainer {
     background-color: white;
+    padding-bottom: 12px;
 }
 
 .letterForm {
@@ -25,11 +26,12 @@
 .titleContainer {
     display: flex;
     justify-content: center;
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
+    font-weight: bold;
 }
 
 .title {
-    color: black;
+    color: rgba(27, 27, 27, 0.95);
     font-size: 30px;
     width: 70%;
     text-align: center;
@@ -38,6 +40,7 @@
 
 .description {
     text-align: center;
+    font-family: 'Avenir';
 }
 
 .enterFieldContainer {
@@ -81,7 +84,7 @@
     color: red;
     font-size: 15px;
     padding-top: 10px;
-    font-family: Franklin Gothic Demi Cond;
+    font-family: 'Avenir';
 }
 
 .errorMessage {
@@ -89,5 +92,5 @@
 }
 
 .successMessage {
-    color: green;
+    color: rgba(27, 27, 27, 0.95);
 }
