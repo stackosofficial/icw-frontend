@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: '0'
 
-      - if: ${{ github.ref == 'refs/heads/main' }}
+      - if: ${{ github.ref == 'refs/heads/master' }}
         name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.40.0
         env:
@@ -29,7 +29,7 @@ jobs:
 
       - id: image-tag
         run: |
-          if [ ${{ github.ref }} == 'refs/heads/main' ]; then
+          if [ ${{ github.ref }} == 'refs/heads/master' ]; then
             echo "::set-output name=tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
           elif [ ${{ github.ref }} == 'refs/heads/staging' ]; then
             echo "::set-output name=tag::staging-$(git rev-parse --short HEAD)"
