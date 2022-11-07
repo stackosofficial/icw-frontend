@@ -82,8 +82,6 @@ export default function Newsletter (
         });
     }
 
-    console.log('NEXT_PUBLIC_WHATSAPP_LINK: ', NEXT_PUBLIC_WHATSAPP_LINK);
-    console.log('NEXT_PUBLIC_TELEGRAM_LINK: ', NEXT_PUBLIC_TELEGRAM_LINK);
     return (
         <div className={styles.letterContainer} id='newsletter'>
             {/* <div className={styles.titleText}>

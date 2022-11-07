@@ -112,41 +112,6 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
     </div>
     )
 
-    const func = (eventData) => {
-        console.log("venue: ", eventData.venue);
-        return eventData.venue;
-    }
-
-    const displayEvents1 = () => (
-        <div className={styles.eventContainer}>
-            {
-                filteredEventList && filteredEventList.map((eventData, index) => (
-                    <a className={styles.eventCard} key={index} target="_blank" href={getLink(eventData)} rel="noopener noreferrer">
-                        
-                        <div className={styles.eventDateContainer}>
-                            <div className={styles.eventName}>{eventData.name}</div>
-                        </div>
-
-                        <div className={styles.eventDateContainer}>
-                                <div className={styles.eventName}>{func(eventData)}</div>
-                            </div>
-
-                        <div className={styles.eventDateContainer}>
-                                <div className={styles.eventDate}>{`${getDays(eventData.from)} ${getMonth(eventData.from)}`}</div>
-                            </div>
-                            
-                            
-                            <div className={styles.eventDateContainer}>
-                                <div>{`${getHours(eventData.from)}:${getMinutes(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)}`}</div>
-                            </div>
-                        
-                    </a>
-                ))
-            }
-    </div>
-    )
-
-
     return (
         <div className={styles.tableSection} id='event-table'>
                 <div className={styles.tableTitleContainer}>
