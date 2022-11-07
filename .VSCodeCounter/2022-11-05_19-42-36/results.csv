@@ -1,0 +1,36 @@
+"filename", "language", "JSON with Comments", "CSS", "Shell Script", "Markdown", "JavaScript", "JSON", "TypeScript", "comment", "blank", "total"
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\README.md", "Markdown", 0, 0, 0, 1, 0, 0, 0, 0, 1, 2
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\about.js", "JavaScript", 0, 0, 0, 0, 23, 0, 0, 0, 1, 24
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\about.module.css", "CSS", 0, 34, 0, 0, 0, 0, 0, 1, 5, 40
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\banner.js", "JavaScript", 0, 0, 0, 0, 38, 0, 0, 0, 2, 40
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\banner.module.css", "CSS", 0, 62, 0, 0, 0, 0, 0, 5, 12, 79
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\common.js", "JavaScript", 0, 0, 0, 0, 7, 0, 0, 0, 1, 8
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventForm.js", "JavaScript", 0, 0, 0, 0, 235, 0, 0, 1, 21, 257
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventForm.module.css", "CSS", 0, 90, 0, 0, 0, 0, 0, 2, 17, 109
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventTable.js", "JavaScript", 0, 0, 0, 0, 130, 0, 0, 6, 27, 163
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventTable.module.css", "CSS", 0, 113, 0, 0, 0, 0, 0, 5, 24, 142
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\footer.js", "JavaScript", 0, 0, 0, 0, 19, 0, 0, 4, 2, 25
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\footer.module.css", "CSS", 0, 30, 0, 0, 0, 0, 0, 0, 6, 36
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\navbar.js", "JavaScript", 0, 0, 0, 0, 24, 0, 0, 0, 2, 26
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\navbar.module.css", "CSS", 0, 16, 0, 0, 0, 0, 0, 0, 3, 19
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\newsletter.js", "JavaScript", 0, 0, 0, 0, 142, 0, 0, 1, 15, 158
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\newsletter.module.css", "CSS", 0, 121, 0, 0, 0, 0, 0, 12, 27, 160
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\partners.js", "JavaScript", 0, 0, 0, 0, 45, 0, 0, 0, 1, 46
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\partners.module.css", "CSS", 0, 31, 0, 0, 0, 0, 0, 1, 7, 39
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\signupbar.js", "JavaScript", 0, 0, 0, 0, 28, 0, 0, 0, 3, 31
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\signupbar.module.css", "CSS", 0, 27, 0, 0, 0, 0, 0, 3, 5, 35
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\loop.js", "JavaScript", 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\next-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 4, 2, 6
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\next-i18next.config.js", "JavaScript", 0, 0, 0, 0, 8, 0, 0, 0, 2, 10
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\next.config.js", "JavaScript", 0, 0, 0, 0, 12, 0, 0, 1, 5, 18
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\package-lock.json", "JSON", 0, 0, 0, 0, 0, 1537, 0, 0, 1, 1538
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\package.json", "JSON", 0, 0, 0, 0, 0, 25, 0, 0, 1, 26
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\404.js", "JavaScript", 0, 0, 0, 0, 5, 0, 0, 0, 1, 6
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\_app.js", "JavaScript", 0, 0, 0, 0, 15, 0, 0, 0, 5, 20
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\index.js", "JavaScript", 0, 0, 0, 0, 44, 0, 0, 3, 7, 54
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\newsletter\validation\[token].js", "JavaScript", 0, 0, 0, 0, 41, 0, 0, 0, 9, 50
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\start.sh", "Shell Script", 0, 0, 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\styles\global.css", "CSS", 0, 95, 0, 0, 0, 0, 0, 9, 18, 122
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\styles\utils.module.css", "CSS", 0, 50, 0, 0, 0, 0, 0, 0, 10, 60
+"c:\Users\mithu\Documents\work\stackos\nextjs-blogts\tsconfig.json", "JSON with Comments", 30, 0, 0, 0, 0, 0, 0, 0, 1, 31
+"Total", "-", 30, 669, 1, 1, 818, 1562, 0, 58, 244, 3383

@@ -1,0 +1,69 @@
+Date : 2022-11-05 19:42:36
+Directory : c:\Users\mithu\Documents\work\stackos\nextjs-blogts
+Total : 34 files,  3081 codes, 58 comments, 244 blanks, all 3383 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          2 |      1,562 |          0 |          2 |      1,564 |
+| JavaScript         |         17 |        818 |         16 |        104 |        938 |
+| CSS                |         11 |        669 |         38 |        134 |        841 |
+| JSON with Comments |          1 |         30 |          0 |          1 |         31 |
+| Shell Script       |          1 |          1 |          0 |          0 |          1 |
+| Markdown           |          1 |          1 |          0 |          1 |          2 |
+| TypeScript         |          1 |          0 |          4 |          2 |          6 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                          |         34 |      3,081 |         58 |        244 |      3,383 |
+| components                                                                                 |         19 |      1,215 |         41 |        181 |      1,437 |
+| pages                                                                                      |          4 |        105 |          3 |         22 |        130 |
+| pages\newsletter                                                                           |          1 |         41 |          0 |          9 |         50 |
+| pages\newsletter\validation                                                                |          1 |         41 |          0 |          9 |         50 |
+| styles                                                                                     |          2 |        145 |          9 |         28 |        182 |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                   | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\README.md                              | Markdown           |          1 |          0 |          1 |          2 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\about.js                    | JavaScript         |         23 |          0 |          1 |         24 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\about.module.css            | CSS                |         34 |          1 |          5 |         40 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\banner.js                   | JavaScript         |         38 |          0 |          2 |         40 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\banner.module.css           | CSS                |         62 |          5 |         12 |         79 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\common.js                   | JavaScript         |          7 |          0 |          1 |          8 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventForm.js                | JavaScript         |        235 |          1 |         21 |        257 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventForm.module.css        | CSS                |         90 |          2 |         17 |        109 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventTable.js               | JavaScript         |        130 |          6 |         27 |        163 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\eventTable.module.css       | CSS                |        113 |          5 |         24 |        142 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\footer.js                   | JavaScript         |         19 |          4 |          2 |         25 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\footer.module.css           | CSS                |         30 |          0 |          6 |         36 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\navbar.js                   | JavaScript         |         24 |          0 |          2 |         26 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\navbar.module.css           | CSS                |         16 |          0 |          3 |         19 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\newsletter.js               | JavaScript         |        142 |          1 |         15 |        158 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\newsletter.module.css       | CSS                |        121 |         12 |         27 |        160 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\partners.js                 | JavaScript         |         45 |          0 |          1 |         46 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\partners.module.css         | CSS                |         31 |          1 |          7 |         39 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\signupbar.js                | JavaScript         |         28 |          0 |          3 |         31 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\components\signupbar.module.css        | CSS                |         27 |          3 |          5 |         35 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\loop.js                                | JavaScript         |          2 |          0 |          0 |          2 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\next-env.d.ts                          | TypeScript         |          0 |          4 |          2 |          6 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\next-i18next.config.js                 | JavaScript         |          8 |          0 |          2 |         10 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\next.config.js                         | JavaScript         |         12 |          1 |          5 |         18 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\package-lock.json                      | JSON               |      1,537 |          0 |          1 |      1,538 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\package.json                           | JSON               |         25 |          0 |          1 |         26 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\404.js                           | JavaScript         |          5 |          0 |          1 |          6 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\_app.js                          | JavaScript         |         15 |          0 |          5 |         20 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\index.js                         | JavaScript         |         44 |          3 |          7 |         54 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\pages\newsletter\validation\[token].js | JavaScript         |         41 |          0 |          9 |         50 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\start.sh                               | Shell Script       |          1 |          0 |          0 |          1 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\styles\global.css                      | CSS                |         95 |          9 |         18 |        122 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\styles\utils.module.css                | CSS                |         50 |          0 |         10 |         60 |
+| c:\Users\mithu\Documents\work\stackos\nextjs-blogts\tsconfig.json                          | JSON with Comments |         30 |          0 |          1 |         31 |
+| Total                                                                                      |                    |      3,081 |         58 |        244 |      3,383 |
++--------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

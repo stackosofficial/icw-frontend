@@ -1,13 +1,32 @@
 
 .letterContainer {
+    /* background-color: rgba(27, 27, 27, 0.87);  */
+    /* background-color: rgba(27, 27, 27, 0.87);  */
     background-color: white;
-    padding-bottom: 12px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
-.letterForm {
+.titleText {
+    text-align: center;
+    font-family: 'Avenir';
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.connectCards {
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    /* justify-content: space-between; */
+}
+
+.center {
     display: flex;
     justify-content: center;
     width: 100%;
+    /* background-color:  */
 }
 
 .container {
@@ -16,14 +35,16 @@
     /* width: 100%; */
 }
 
-.card {
-    width: 50%;
+.newsletterCard {
+    /* width: 50%; */
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+    padding-top: 20px;;
+    /* border-right: 1px solid black; */
 }
 
-.titleContainer {
+.letterTitleContainer {
     display: flex;
     justify-content: center;
     font-family: 'Avenir';
@@ -69,7 +90,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 .captchaContainer {
@@ -93,4 +114,76 @@
 
 .successMessage {
     color: rgba(27, 27, 27, 0.95);
+}
+
+.signupBackground {
+    background-color:#aaff00;
+}
+
+.signupBar {
+    display: flex;
+    /* margin-left: 20px; */
+    padding-top: 20px;
+    justify-content: center;
+    background-color:#aaff00;
+    /* border-bottom: 2px solid black; */
+}
+
+.signupMiddle {
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 40px; */
+    /* padding-bottom: 50px; */
+}
+
+.endLine {
+    font-size: 0px;
+}
+
+.iconCenter {
+    display: flex;
+    justify-content: center;
+    /* padding-top: 20px; */
+}
+
+.navBar {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    /* padding-top: 15px; */
+}
+
+.navCell {
+    /* padding-left: 20px; */
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.navCellTitle {
+    font-family: 'Avenir';
+    font-weight: bold;
+    color: rgba(27, 27, 27, 0.95);
+    /* font-weight: bold; */
+    margin: auto;
+    font-size: 18px;
+    letter-spacing: 2px;
+    padding-left: 10px;
+}
+
+.buttonPadding {
+    /* margin-left: 20px; */
+}
+
+.iconClass {
+    background-color: rgba(27, 27, 27, 0.95);
+}
+
+.connectTitleContainer {
+    text-align: center;
+    color: rgba(27, 27, 27, 0.95);
+    font-size: 26px;
+    font-family: 'Avenir';
+    font-weight: bold;
+    letter-spacing: 3px;
 }

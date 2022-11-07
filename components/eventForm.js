@@ -215,9 +215,9 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                             className={styles.eventFieldInput}
                                         >
                                         {
-                                            categoriesList.map((category) => {
+                                            categoriesList.map((category, index) => {
                                                 return (
-                                                    <option value={category}>{category}</option>
+                                                    <option key={index} value={category}>{category}</option>
                                                 );
                                             })
                                         }

@@ -1,0 +1,19 @@
+
+.navbarSection {
+    background-color: #aaff00;
+    color: grey;
+    font-family: 'Avenir';
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.navbarButton {
+    padding: 10px;
+    cursor: pointer;
+    color: rgba(27, 27, 27, 0.95);
+}
+
+.navbarButton:hover {
+    color: grey;
+}

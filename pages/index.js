@@ -4,6 +4,7 @@ import About from '../components/about';
 import Navbar from '../components/navbar';
 import Banner from '../components/banner';
 import EventForm from '../components/eventForm';
+import EventLinkBar from '../components/eventLinkBar';
 import Newsletter from '../components/newsletter';
 import EventTable from '../components/eventTable';
 import SignupBar from '../components/signupbar';
@@ -15,8 +16,12 @@ import landscapePic from '../public/images/India_Crypto_Week_V2.0.png';
 
 
 
-export default function Home({NEXT_PUBLIC_BE_URL, NEXT_PUBLIC_RECAPTCHA_SITE_KEY}) {
-
+export default function Home({
+    NEXT_PUBLIC_BE_URL,
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+   NEXT_PUBLIC_TELEGRAM_LINK,
+   NEXT_PUBLIC_WHATSAPP_LINK
+  }) {
 
   return (
     <div>
@@ -33,9 +38,14 @@ export default function Home({NEXT_PUBLIC_BE_URL, NEXT_PUBLIC_RECAPTCHA_SITE_KEY
       </div>
       <Navbar/>
       <Banner/>
-      <SignupBar/>
+      <EventLinkBar/>
       <About/>
-      <Newsletter siteKey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY} NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
+      <Newsletter
+        siteKey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}
+        NEXT_PUBLIC_TELEGRAM_LINK={NEXT_PUBLIC_TELEGRAM_LINK}
+        NEXT_PUBLIC_WHATSAPP_LINK={NEXT_PUBLIC_WHATSAPP_LINK}
+        />
       <EventTable NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
       <EventForm siteKey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY} NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
       {/* <MediaPartners/> */}

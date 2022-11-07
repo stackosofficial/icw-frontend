@@ -3,9 +3,15 @@ import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
+import { SocialIcon } from 'react-social-icons';
 
 
-export default function Newsletter ({siteKey, NEXT_PUBLIC_BE_URL}) {
+export default function Newsletter (
+    {siteKey,
+    NEXT_PUBLIC_BE_URL,
+    NEXT_PUBLIC_TELEGRAM_LINK,
+    NEXT_PUBLIC_WHATSAPP_LINK
+}) {
     const captchaRef = useRef(null)
     const [isSuccess, setSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -76,46 +82,84 @@ export default function Newsletter ({siteKey, NEXT_PUBLIC_BE_URL}) {
         });
     }
 
+    console.log('NEXT_PUBLIC_WHATSAPP_LINK: ', NEXT_PUBLIC_WHATSAPP_LINK);
+    console.log('NEXT_PUBLIC_TELEGRAM_LINK: ', NEXT_PUBLIC_TELEGRAM_LINK);
     return (
-        <div className={styles.letterContainer}>
-            <div className={styles.letterForm}>
-                <div className={styles.card}>
-                    <div className={styles.titleContainer}>
-                        <div className={styles.title}>
+        <div className={styles.letterContainer} id='newsletter'>
+            {/* <div className={styles.titleText}>
+                LETS CONNECT
+            </div> */}
+                <div className={styles.signupBackground}>
+                    <div className={styles.signupBar}>
+                        <div className={styles.signupMiddle}>
+                            <div className={styles.connectTitleContainer}>
+                                GET NOTIFICATIONS
+                            </div>
+                            <div className={styles.iconCenter}>
+                                <div className={styles.navBar}>
+                                    <div className={styles.navCell}>
+                                        <SocialIcon
+                                            url={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : ''}
+                                            bgColor='#1B1B1B'
+                                        />
+                                        <div className={styles.navCellTitle}>JOIN WHATSAPP</div>
+                                    </div>
+                                    <div className={styles.navCell}>
+                                        <SocialIcon 
+                                        url={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.twitter.com'}
+                                        bgColor='#1B1B1B'
+                                        />
+                                        <div className={styles.navCellTitle}>JOIN TELEGRAM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.lineContainer}>
+                        <div className={classNames( 'globalEndLine', styles.endLine)}>&nbsp;</div>
+                    </div>
+                </div>
+
+            <div className={styles.center}>
+                <div className={styles.connectCards}>
+
+                    <div className={styles.newsletterCard}>
+                        <div className={styles.connectTitleContainer}>
                             NEWSLETTER
                         </div>
-                    </div>
-                    <div className={styles.description}>
-                        Get notified of the finest Web3 meetups in India.
-                    </div>
-                    <div className={styles.enterFieldContainer}>
-                        <input type='text'
-                            placeholder='Enter your email'
-                            value={userData.email ? userData.email : ''}
-                            className={classNames('globalInput', styles.enterInput)}
-                            onChange={(e) => onChange({email: e.target.value})}
-                        />
-                    </div>
-                    <div className={styles.captchaContainer}>
-                        <div>
-                        <ReCAPTCHA
-                            sitekey={siteKey}
-                            ref={captchaRef}
-                        />
+                        <div className={styles.description}>
+                            Get notified of the finest Web3 meetups in India.
+                        </div> 
+                        <div className={styles.enterFieldContainer}>
+                            <input type='text'
+                                placeholder='Enter your email'
+                                value={userData.email ? userData.email : ''}
+                                className={classNames('globalInput', styles.enterInput)}
+                                onChange={(e) => onChange({email: e.target.value})}
+                            />
+                        </div>
+                        <div className={styles.captchaContainer}>
+                            <div>
+                            <ReCAPTCHA
+                                sitekey={siteKey}
+                                ref={captchaRef}
+                            />
+                            </div>
+                        </div>
+                        <div className={styles.enterFieldContainer}>
+                            <button className={classNames('globalButton', styles.enterButton)}
+                                onClick={() => sendNewsletterEmail()}
+                                disabled={isDisabled}
+                            >
+                                SUBSCRIBE
+                            </button>
+                        </div>
+                        <div className={styles.validateContainer}>
+                            {errorMessage ? <div className={styles.errorMessage}>{errorMessage}</div> : ''}
+                            {(!errorMessage) && isSuccess ? <div className={styles.successMessage}>Success, check your email inbox for confirmation.</div>: ''}
                         </div>
                     </div>
-                    <div className={styles.enterFieldContainer}>
-                        <button className={classNames('globalButton', styles.enterButton)}
-                            onClick={() => sendNewsletterEmail()}
-                            disabled={isDisabled}
-                        >
-                            SUBSCRIBE
-                        </button>
-                    </div>
-                    <div className={styles.validateContainer}>
-                        {errorMessage ? <div className={styles.errorMessage}>{errorMessage}</div> : ''}
-                        {(!errorMessage) && isSuccess ? <div className={styles.successMessage}>Success, check your email inbox for confirmation.</div>: ''}
-                    </div>
+
                 </div>
             </div>
         </div>

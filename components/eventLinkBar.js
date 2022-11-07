@@ -1,4 +1,5 @@
-import styles from './navbar.module.css'
+import styles from './eventLinkBar.module.css'
+
 
 const moveTo = (elemID) => {
     const element = document.getElementById(elemID)
@@ -9,9 +10,6 @@ const moveTo = (elemID) => {
 export default function Navbar () {
     return (
         <div className={styles.navbarSection}>
-            <div className={styles.navbarButton} onClick={() => moveTo('event-about')}>
-                ABOUT
-            </div>
             <div className={styles.navbarButton} onClick={() => moveTo('newsletter')}>
                 NEWSLETTER
             </div>
@@ -19,10 +17,7 @@ export default function Navbar () {
                 SCHEDULE
             </div>
             <div className={styles.navbarButton} onClick={() => moveTo('event-register')}>
-                REGISTER
-            </div>
-            <div className={styles.navbarButton} onClick={() => moveTo('event-media-partners')}>
-                MEDIA
+                ADD EVENT
             </div>
         </div>
     );

@@ -97,7 +97,9 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
                         filteredEventList && filteredEventList.map((eventData, index) => (
                             <a className={styles.tableRow} key={index} target="_blank" href={getLink(eventData)} rel="noopener noreferrer" title={getLink(eventData)}>
                                 <div className={styles.dateCell}>{`${getDays(eventData.from)} ${getMonth(eventData.from)}`}</div>
-                                <div className={styles.nameCell}>{eventData.name}</div>
+                                <div className={styles.nameCell} title={eventData.name}>{eventData.name}</div>
+                                <div className={styles.venueCell} title={eventData.venue}>{eventData.venue}</div>
+                                <div className={styles.categoryCell} title={eventData.category}>{eventData.category}</div>
                                 <div className={styles.timeCell}>{
                                 `${getHours(eventData.from)}:${getMinutes(eventData.from)} ${getAMPM(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)} ${getAMPM(eventData.to)}`}</div>
                             </a>
@@ -110,6 +112,11 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
     </div>
     )
 
+    const func = (eventData) => {
+        console.log("venue: ", eventData.venue);
+        return eventData.venue;
+    }
+
     const displayEvents1 = () => (
         <div className={styles.eventContainer}>
             {
@@ -119,6 +126,11 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
                         <div className={styles.eventDateContainer}>
                             <div className={styles.eventName}>{eventData.name}</div>
                         </div>
+
+                        <div className={styles.eventDateContainer}>
+                                <div className={styles.eventName}>{func(eventData)}</div>
+                            </div>
+
                         <div className={styles.eventDateContainer}>
                                 <div className={styles.eventDate}>{`${getDays(eventData.from)} ${getMonth(eventData.from)}`}</div>
                             </div>
@@ -126,10 +138,6 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
                             
                             <div className={styles.eventDateContainer}>
                                 <div>{`${getHours(eventData.from)}:${getMinutes(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)}`}</div>
-                            </div>
-
-                            <div className={styles.eventDateContainer}>
-                                <div className={styles.eventName}>{eventData.venue}</div>
                             </div>
                         
                     </a>

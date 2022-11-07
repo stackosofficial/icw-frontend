@@ -1,7 +1,10 @@
 import styles from './signupbar.module.css';
 import classNames from 'classnames';
 
-export default function SignupBar () {
+export default function SignupBar ({
+    NEXT_PUBLIC_TELEGRAM_LINK,
+    NEXT_PUBLIC_WHATSAPP_LINK
+}) {
 
     return (
         <div className={styles.signupBar}>
@@ -11,12 +14,14 @@ export default function SignupBar () {
                 </div>
                 <div className={styles.navBar}>
                     <div className={styles.navCell}>
-                        <a href='https://t.me/IndiaCryptoWeek' rel="noopener noreferrer">
+                        <a href={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : ''} rel="noopener noreferrer" target="_blank">
                             <button className={classNames('globalButton')} >JOIN TELEGRAM</button>
                         </a> 
                     </div>
-                    <div classname={styles.navCell}>
-                        <button className={classNames('globalButton', styles.buttonPadding)}>JOIN WHATSAPP</button>
+                    <div className={styles.navCell}>
+                        <a href= {NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : ''} rel="noopener noreferrer" target="_blank">
+                            <button className={classNames('globalButton', styles.buttonPadding)}>JOIN WHATSAPP</button>
+                        </a>
                     </div>
                 </div>
 
