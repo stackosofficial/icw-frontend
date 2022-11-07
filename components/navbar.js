@@ -9,9 +9,9 @@ const moveTo = (elemID) => {
 export default function Navbar () {
     return (
         <div className={styles.navbarSection}>
-            <div className={styles.navbarButton} onClick={() => moveTo('event-about')}>
+            {/* <div className={styles.navbarButton} onClick={() => moveTo('event-about')}>
                 ABOUT
-            </div>
+            </div> */}
             <div className={styles.navbarButton} onClick={() => moveTo('newsletter')}>
                 NEWSLETTER
             </div>

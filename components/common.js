@@ -5,4 +5,5 @@ export const categoriesList = [
     "Conference",
     "Talks & Networking",
     "Networking & After-party",
+    "Hackathon"
 ];

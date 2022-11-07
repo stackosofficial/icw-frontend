@@ -29,11 +29,32 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         }
     };
 
-    const validate = () => {
-        let aTime = new Date(event.from);
-        let bTime = new Date(event.to);
-        const today = new Date();
+    const isPhoneNo = (str) => 
+    {
+        if(!str)
+            return false;
 
+        if(str.includes('.'))
+            return false;
+
+        try {
+            var num = parseInt(str);
+            var fnum = parseFloat(str);
+            if((fnum - num)) {
+                return false;
+            }
+            if(num > 9999999999 || num < 1000000000)
+                return false;
+
+            return true;
+        }
+        catch(err) {
+            return false;
+        }
+    }
+
+    const validate = () =>
+    {
         if(event.name.length > 32) {
             setErrorMessage("name should be less than 32 characters.");
             return false;
@@ -48,13 +69,21 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             setErrorMessage("Email length is too big.");
         }
 
-        if(aTime < today) {
-            setErrorMessage("From time cannot be older than today.");
-            return false;
-        }
-        if(aTime > bTime) {
-            setErrorMessage("From time cannot be greater than To Time.");
-            return false;
+        if(event.from) {
+            const today = new Date();
+            let aTime = new Date(event.from);
+            if(aTime < today) {
+                setErrorMessage("From time cannot be older than today.");
+                return false;
+            }
+
+            if(event.to) {
+                let bTime = new Date(event.to);
+                if(aTime > bTime) {
+                    setErrorMessage("From time cannot be greater than To Time.");
+                    return false;
+                }
+            }
         }
         
         if(!stringIsAValidUrl(event.link, ['http', 'https'])) {
@@ -71,6 +100,11 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             return false;
         }
 
+        if(!isPhoneNo(event.phoneNo)) {
+            setErrorMessage('Please enter a valid phone No.');
+            return false;
+        }
+
         const token = captchaRef.current.getValue();
         if(!token || !token.length) {
             setErrorMessage("Please enter the captcha.");
@@ -84,7 +118,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         event = {...event, ...change};
         setEvent(event);
 
-        if(event.name && event.link && event.from && event.to && event.createdByEmail) {
+        if(event.name && event.link && event.createdByEmail && isPhoneNo(event.phoneNo)) {
             setDisabled(false);
         }
         else {
@@ -147,7 +181,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                     <div className={styles.eventForm}>
                         <div className={styles.eventFieldList}>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Name: </div>
+                                <div className={styles.eventFieldLabel}>Name*: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.name ? event.name : ''}
@@ -156,7 +190,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Link: </div>
+                                <div className={styles.eventFieldLabel}>Link*: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.link ? event.link : ''}
@@ -165,10 +199,21 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                     />
                                 </div>
                             </div>
+                            {/* <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Additional Contact: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <textarea 
+                                        rows="4"
+                                        value={event.contact ? event.contact : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({contact: e.target.value})}
+                                    />
+                                </div>
+                            </div> */}
                             <div className={styles.eventField}>
                                 <div className={styles.eventFieldLabel}>From: </div>
                                 <div className={styles.eventFieldInputContainer}>
-                                    <input type='datetime-local'
+                                    <input type='date'
                                         value={event.from ? event.from : ''}
                                         className={styles.eventFieldInput}
                                         onChange={(e) => onChange({from: e.target.value})}
@@ -178,7 +223,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                             <div className={styles.eventField}>
                                 <div className={styles.eventFieldLabel}>To: </div>
                                 <div className={styles.eventFieldInputContainer}>
-                                    <input type='datetime-local'
+                                    <input type='date'
                                         disabled={!event.from}
                                         value={event.to ? event.to : ''}
                                         className={styles.eventFieldInput}
@@ -197,7 +242,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Email: </div>
+                                <div className={styles.eventFieldLabel}>Email*: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.createdByEmail ? event.createdByEmail : ''}
@@ -207,9 +252,21 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Ph No*: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='text'
+                                        value={event.phoneNo ? event.phoneNo : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({phoneNo: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
                                 <div className={styles.eventFieldLabel}>Category: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <select name="category"
+                                            selected
+                                            defaultValue={'none'}
                                             value={event.category ? event.category : ''}
                                             onChange={(e) => onChange({category: e.target.value})}
                                             className={styles.eventFieldInput}

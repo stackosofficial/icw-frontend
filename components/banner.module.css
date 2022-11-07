@@ -9,8 +9,8 @@
   background-color: rgba(27,27,27, 0.87);
   color: white;
   /* padding: 80px; */
-  padding-left: 90px;
-  padding-right: 90px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-top: 50px;
   padding-bottom: 40px;
   text-align: center;
@@ -38,6 +38,14 @@
   margin-top: -20px;
   font-weight: bold;
   font-family: 'Bebas';
+}
+
+.ownerHeader {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  border: 1px white;
+  margin-bottom: 30px;
 }
 
 .owner {
@@ -75,5 +83,8 @@
   justify-content: center;
 }
 
-
+.sponserRow {
+  display: flex;
+  justify-content: space-between;
+}
   

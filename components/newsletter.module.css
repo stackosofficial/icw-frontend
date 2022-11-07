@@ -3,7 +3,7 @@
     /* background-color: rgba(27, 27, 27, 0.87);  */
     /* background-color: rgba(27, 27, 27, 0.87);  */
     background-color: white;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -39,8 +39,7 @@
     /* width: 50%; */
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
-    padding-top: 20px;;
+    padding-top: 30px;
     /* border-right: 1px solid black; */
 }
 
@@ -62,6 +61,7 @@
 .description {
     text-align: center;
     font-family: 'Avenir';
+    font-size: 18px;
 }
 
 .enterFieldContainer {
@@ -79,7 +79,7 @@
 }
 
 .enterInput {
-    width: 60%;
+    width: 80%;
 }
 
 .enterButton {
@@ -124,6 +124,7 @@
     display: flex;
     /* margin-left: 20px; */
     padding-top: 20px;
+    padding-bottom: 20px;
     justify-content: center;
     background-color:#aaff00;
     /* border-bottom: 2px solid black; */
@@ -149,7 +150,7 @@
 .navBar {
     display: flex;
     /* justify-content: space-between; */
-    flex-direction: column;
+    /* flex-direction: column; */
     /* padding-top: 15px; */
 }
 

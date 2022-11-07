@@ -16,9 +16,9 @@ export default function eventDescription () {
                 Watch this space for continuous event updates taking place throughout the week.
                 </div>
             </div>
-            <div className={styles.lineContainer}>
+            {/* <div className={styles.lineContainer}>
                 <div className={classNames('globalEndLine')}>&nbsp;</div>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -8,16 +8,6 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
     const [eventList, setEventList] = useState();
     var [filteredEventList, setFilteredEventList] = useState();
 
-    useEffect(() => {
-        axios.get(`${NEXT_PUBLIC_BE_URL}/users`).then((res) => {
-            setEventList(res.data);
-            setFilteredEventList(res.data);
-        })
-        .catch((err)=> {
-            console.error("error occurred during get: ",err);
-        });
-    }, []);
-
     const getHours = (dateStr) => {
         var hours = new Date(dateStr).getHours();
         if(hours > 12)
@@ -88,6 +78,31 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
             element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
+    const sortEvents = (oldEventsList) => {
+        return oldEventsList.sort((event1, event2) => {
+            if(!event1.from && !event2.from)
+                return 1;
+            if(!event1.from)
+                return 1;
+            if(!event2.from)
+                return -1;
+
+            return event1.from <= event2.from ? -1: 1;
+        })
+    }
+
+    useEffect(() => {
+        axios.get(`${NEXT_PUBLIC_BE_URL}/users`).then((res) => {
+            const sortedEventList = sortEvents(res.data);
+            // const sortedEventList = res.data;
+            setEventList(sortedEventList);
+            setFilteredEventList(sortedEventList);
+        })
+        .catch((err)=> {
+            console.error("error occurred during get: ",err);
+        });
+    }, []);
+
     const displayEvents = () => (
         <div className={styles.tableContainer}>
         <div className={styles.tableSize}>
@@ -96,12 +111,18 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
                     {
                         filteredEventList && filteredEventList.map((eventData, index) => (
                             <a className={styles.tableRow} key={index} target="_blank" href={getLink(eventData)} rel="noopener noreferrer" title={getLink(eventData)}>
-                                <div className={styles.dateCell}>{`${getDays(eventData.from)} ${getMonth(eventData.from)}`}</div>
+                                <div className={styles.dateCell}>{
+                                    eventData.from ?
+                                    `${getDays(eventData.from)} ${getMonth(eventData.from)}`
+                                    : 'TBD'
+                                }</div>
                                 <div className={styles.nameCell} title={eventData.name}>{eventData.name}</div>
                                 <div className={styles.venueCell} title={eventData.venue}>{eventData.venue}</div>
                                 <div className={styles.categoryCell} title={eventData.category}>{eventData.category}</div>
-                                <div className={styles.timeCell}>{
-                                `${getHours(eventData.from)}:${getMinutes(eventData.from)} ${getAMPM(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)} ${getAMPM(eventData.to)}`}</div>
+                                {/* <div className={styles.categoryCell}>{eventData.contact}</div> */}
+                                {/* <div className={styles.timeCell}>{
+                                    `${getHours(eventData.from)}:${getMinutes(eventData.from)} ${getAMPM(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)} ${getAMPM(eventData.to)}`
+                                }</div> */}
                             </a>
                         ))
                     }

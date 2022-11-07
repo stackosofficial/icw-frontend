@@ -84,9 +84,6 @@ export default function Newsletter (
 
     return (
         <div className={styles.letterContainer} id='newsletter'>
-            {/* <div className={styles.titleText}>
-                LETS CONNECT
-            </div> */}
                 <div className={styles.signupBackground}>
                     <div className={styles.signupBar}>
                         <div className={styles.signupMiddle}>
@@ -97,25 +94,32 @@ export default function Newsletter (
                                 <div className={styles.navBar}>
                                     <div className={styles.navCell}>
                                         <SocialIcon
-                                            url={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : ''}
+                                            url={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : 'https://www.whatsapp.com'}
                                             bgColor='#1B1B1B'
                                         />
-                                        <div className={styles.navCellTitle}>JOIN WHATSAPP</div>
+                                        <a
+                                            href={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : 'https://www.whatsapp.com'}
+                                            className={styles.navCellTitle}>WHATSAPP</a>
                                     </div>
                                     <div className={styles.navCell}>
                                         <SocialIcon 
-                                        url={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.twitter.com'}
+                                        url={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.telegram.com'}
                                         bgColor='#1B1B1B'
                                         />
-                                        <div className={styles.navCellTitle}>JOIN TELEGRAM</div>
+                                        <a
+                                        className={styles.navCellTitle}
+                                        href={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.telegram.com'}
+                                        >
+                                        TELEGRAM
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.lineContainer}>
+                    {/* <div className={styles.lineContainer}>
                         <div className={classNames( 'globalEndLine', styles.endLine)}>&nbsp;</div>
-                    </div>
+                    </div> */}
                 </div>
 
             <div className={styles.center}>
