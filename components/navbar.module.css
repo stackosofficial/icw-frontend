@@ -11,9 +11,23 @@
 .navbarButton {
     padding: 10px;
     cursor: pointer;
+    overflow: hidden;
     color: rgba(27, 27, 27, 0.95);
 }
 
 .navbarButton:hover {
     color: grey;
+}
+
+.mobileSection {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 10px;
+    padding-top: 8px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
 }

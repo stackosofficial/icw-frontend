@@ -58,10 +58,19 @@
     font-size: 40px;
 }
 
+.descCenter {
+    display: flex;
+    justify-content: center;
+}
+
 .description {
     text-align: center;
     font-family: 'Avenir';
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 25px;
+    width: 80%;
+    color: gray;
+    text-align: center;
 }
 
 .enterFieldContainer {
@@ -144,7 +153,7 @@
 .iconCenter {
     display: flex;
     justify-content: center;
-    /* padding-top: 20px; */
+    padding-top: 15px;
 }
 
 .navBar {
@@ -159,6 +168,11 @@
     padding: 10px;
     display: flex;
     flex-direction: row;
+    color: black;
+}
+
+.navLink:hover {
+    text-decoration: none;
 }
 
 .navCellTitle {
@@ -177,7 +191,9 @@
 }
 
 .iconClass {
-    background-color: rgba(27, 27, 27, 0.95);
+    /* background-color: rgba(27, 27, 27, 0.95); */
+    width: 32px;
+    height: 32px;
 }
 
 .connectTitleContainer {
@@ -187,4 +203,15 @@
     font-family: 'Avenir';
     font-weight: bold;
     letter-spacing: 3px;
+}
+
+@media (max-width: 768px) {
+    .navBar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .description {
+        font-size: 20px;
+    }
 }

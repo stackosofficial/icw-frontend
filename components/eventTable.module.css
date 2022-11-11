@@ -3,8 +3,17 @@
     /* display: flex;
     justify-content: center;*/
     background-color: rgba(27, 27, 27, 0.87); 
+    border: 2px solid #aaff00;
+    
+    /* border: 2px solid #aaff00; */
+    
+}
+
+.tableBorder {
+    border: 2px solid black;
     padding-top: 20px;
     padding-bottom: 40px;
+
 }
 
 .searchContainer {
@@ -20,16 +29,9 @@
 .tableContainer {
     display: flex;
     justify-content: center;
-    /* width: 80%; */
 }
 
 .tableTitleContainer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.addEventContainer {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -41,50 +43,47 @@
     color: white;
     font-size: 40px;
 }
+
 .table {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     font-family: 'Avenir';
-    /* padding-left: 10%; */
-}
-
-.tableSize {
     width: 90%;
 }
 
-.tableHeader, .tableRow {
+.eventCard {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.tableHeader {
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid #aaff00;
+    width: 250px;
+    margin: 20px;
     color: white;
 }
 
-.tableRow {
-    color: white;
-    margin-bottom: 40px;
-    border-top: 2px solid #aaff00;
-    text-decoration: none;
-}
-
-.tableRow:hover {
+.eventCard:hover {
     background-color: rgba(255, 255, 255, 0.2);
     text-decoration: none;
+    animation-duration: 0.3s;
+    animation-name: cardExpand;
+    animation-fill-mode: forwards;
 }
 
+.eventCardFade {
+    opacity: 0.3;
+}
 
 .dateCell {
-    width: 20%;
+    width: 100%;
     font-size: 28px;
     font-family: 'Enriqueta';
     font-weight: bold;
-    /* background-color: rgba(255, 255, 255, 1); */
     background-color: #aaff00;
-    color: rgba(40, 40, 40, 1);;
-    text-align: right;
-    padding-right: 10px;
+    color: rgba(40, 40, 40, 1);
+    text-align: center;
+    margin-bottom: 8px;
 }
 
 .timeCell {
@@ -96,70 +95,130 @@
 }
 
 .nameCell {
-    width: 60%;
-    padding-left: 15px;
+    text-align: center;
     margin: auto;
-    font-family: 'Avenir-light';
-    overflow: hidden;
-    text-overflow: elipsis;
-    white-space: nowrap;
+    font-family: 'Bebas';
+    font-size: 22px;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    width: 100%;
 }
 
 .venueCell {
-    width: 40%;
+    width: 100%;
     padding-left: 10px;
     margin: auto;
     font-family: 'Avenir-light';
-    overflow: hidden;
-    text-overflow: elipsis;
-    white-space: nowrap;
+    font-size: 18px;
 }
 
 .categoryCell {
-    width: 40%;
+    width: 100%;
     padding-left: 10px;
     margin: auto;
     font-family: 'Avenir-light';
-    overflow: hidden;
-    text-overflow: elipsis;
-    white-space: nowrap;
+    font-style: italic;
+    font-size: 15px;
+    margin-top: 10px;
 }
 
-.eventContainer {
+
+.moreSection {
     display: flex;
-    justify-content: center;
-}
-
-.eventCard {
-    width: 20%;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: blue;
-    color: white;
-    text-decoration: none;
-    padding: 20px 40px 20px 40px;
-}
-
-.eventCard:hover {
-    text-decoration: none;
-}
-
-.eventDateContainer {
-    display: flex;
-    justify-content: center;
-}
-
-.eventDate {
-    font-size: 30px;
-    text-align: center;
-}
-
-.eventName {
-    text-align: center;
-    font-weight: bold;
-}
-
-.eventContent {
     align-items: flex-end;
+    padding-top: 18px;
+}
+
+.priceSection {
+    border-top: 1px solid #aaff00;
+    border-right: 1px solid #aaff00;
+    text-align:center;
+    padding: 4px 10px 2px 8px;
+    /* margin: auto; */
+}
+
+.priceText {
+    font-size: 12px;
+    font-family: Avenir-light;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+.more {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
+.moreText {
+    font-size: 15px;
+    font-family: Avenir-light;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    letter-spacing: 1px;
+    color: white;
+    /* text-decoration: underline; */
+    padding: 4px 6px 4px 8px;
+}
+
+.moreText:hover {
+    background-color: black;
+}
+
+.timelineContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.timeline {
+    background-color: white;
+    border: 4px solid #aaff00;
+    width: 90%;
+}
+
+.tabContainer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.tabList {
+    display: flex;
+    font-size: 20px;
+    font-family: Avenir;
+    font-weight: bold;
+    color: white;
+}
+
+.tab {
+    padding: 5px 10px 5px 10px;
+}
+
+.timelineTab {
+    margin-left: 20px;
+}
+
+.clickableTab {
+    background-color: rgba(27, 27, 27, 0.87);
+    color: #aaff00;
+    cursor: pointer;
+}
+
+.clickableTab:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.contactCard {
+    position: fixed;
+    border: 2px solid #aaff00;
+    color: white;
+    background-color: rgba(27, 27, 27, 1);
+    user-select: text;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: consolas;
+    font-size: 15px;
+    word-wrap: break-word;
+    max-width: 150px;
 }

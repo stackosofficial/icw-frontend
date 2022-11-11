@@ -4,7 +4,8 @@ import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import { SocialIcon } from 'react-social-icons';
-
+import {FaWhatsapp} from 'react-icons/fa';
+import {FaTelegram} from 'react-icons/fa';
 
 export default function Newsletter (
     {siteKey,
@@ -92,26 +93,40 @@ export default function Newsletter (
                             </div>
                             <div className={styles.iconCenter}>
                                 <div className={styles.navBar}>
-                                    <div className={styles.navCell}>
-                                        <SocialIcon
-                                            url={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : 'https://www.whatsapp.com'}
-                                            bgColor='#1B1B1B'
-                                        />
-                                        <a
-                                            href={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : 'https://www.whatsapp.com'}
-                                            className={styles.navCellTitle}>WHATSAPP</a>
-                                    </div>
-                                    <div className={styles.navCell}>
-                                        <SocialIcon 
-                                        url={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.telegram.com'}
-                                        bgColor='#1B1B1B'
-                                        />
-                                        <a
-                                        className={styles.navCellTitle}
-                                        href={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.telegram.com'}
+                                    <div>
+                                        <a href={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : 'https://www.whatsapp.com'}
+                                            target='_blank'
+                                            className={styles.navLink}
                                         >
-                                        TELEGRAM
+                                            <div className={styles.navCell}>
+                                                <FaWhatsapp
+                                                    className={styles.iconClass}
+                                                />
+                                                <span
+                                                    
+                                                    className={styles.navCellTitle}>WHATSAPP
+                                                </span>
+                                            </div>
                                         </a>
+                                    </div>
+                                    <div>
+                                        <a
+                                            href={NEXT_PUBLIC_TELEGRAM_LINK ? NEXT_PUBLIC_TELEGRAM_LINK : 'https://www.telegram.com'}
+                                            target='_blank'
+                                            className={styles.navLink}
+                                        >
+                                            <div className={styles.navCell}>
+                                                <FaTelegram
+                                                    className={styles.iconClass}
+                                                />
+                                                <span
+                                                className={styles.navCellTitle}
+                                                >
+                                                    TELEGRAM
+                                                </span>
+                                            </div>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -129,9 +144,12 @@ export default function Newsletter (
                         <div className={styles.connectTitleContainer}>
                             NEWSLETTER
                         </div>
-                        <div className={styles.description}>
-                            Get notified of the finest Web3 meetups in India.
-                        </div> 
+                        <div className={styles.descCenter}>
+                            <div className={styles.description}>
+                                Get notified of the finest Web3 meetups in India.
+                            </div> 
+                        </div>
+
                         <div className={styles.enterFieldContainer}>
                             <input type='text'
                                 placeholder='Enter your email'

@@ -11,9 +11,19 @@
 .navbarButton {
     padding: 10px;
     cursor: pointer;
+    overflow: hidden;
+    /* text-overflow: elipsis; */
+    white-space: nowrap;
     color: rgba(27, 27, 27, 0.95);
 }
 
 .navbarButton:hover {
     color: grey;
+}
+
+@media (max-width: 768px) {
+    .navbarButton {
+        font-size: 15px;
+    }
+
 }

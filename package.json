@@ -10,10 +10,12 @@
     "classnames": "^2.3.2",
     "crypto-js": "^4.1.1",
     "eslint-config-next": "^13.0.1",
+    "gantt-schedule-timeline-calendar": "^3.33.13",
     "next": "^13.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^2.1.0",
+    "react-icons": "^4.6.0",
     "react-modal": "^3.16.1",
     "react-social-icons": "^5.15.0"
   },

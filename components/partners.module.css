@@ -21,10 +21,17 @@
     letter-spacing: 3px;
 }
 
+.mediaCenter {
+    display: flex;
+    justify-content: center;
+}
+
 .mediaRow {
     display: flex;
     flex-direction: row;
     padding-top: 40px;
+    width: 70%;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -34,5 +41,7 @@
 }
 
 .mediaPic {
-    padding-left: 30px;
+    /* padding-left: 30px; */
+    padding: 30px;
+    align-items: center;
 }

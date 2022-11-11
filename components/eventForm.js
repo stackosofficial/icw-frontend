@@ -67,6 +67,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
 
         if(event.createdByEmail.length > 254) {
             setErrorMessage("Email length is too big.");
+            return false;
         }
 
         if(event.from) {
@@ -86,7 +87,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             }
         }
         
-        if(!stringIsAValidUrl(event.link, ['http', 'https'])) {
+        if(event.link && !stringIsAValidUrl(event.link, ['http', 'https'])) {
             setErrorMessage("Link is not a valid URL. Enter a HTTP/HTTPS link.");
             return false;
         }
@@ -105,6 +106,11 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             return false;
         }
 
+        if(event.price && isNaN(event.price)) {
+            setErrorMessage('Price should be a number.');
+            return false;
+        }
+
         const token = captchaRef.current.getValue();
         if(!token || !token.length) {
             setErrorMessage("Please enter the captcha.");
@@ -118,7 +124,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         event = {...event, ...change};
         setEvent(event);
 
-        if(event.name && event.link && event.createdByEmail && isPhoneNo(event.phoneNo)) {
+        if(event.name && event.createdByEmail && isPhoneNo(event.phoneNo)) {
             setDisabled(false);
         }
         else {
@@ -190,7 +196,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Link*: </div>
+                                <div className={styles.eventFieldLabel}>Link: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.link ? event.link : ''}
@@ -199,17 +205,17 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                     />
                                 </div>
                             </div>
-                            {/* <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Additional Contact: </div>
+                            <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Contact: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <textarea 
                                         rows="4"
                                         value={event.contact ? event.contact : ''}
-                                        className={styles.eventFieldInput}
+                                        className={classNames(styles.eventFieldInput, styles.textAreaInput)}
                                         onChange={(e) => onChange({contact: e.target.value})}
                                     />
                                 </div>
-                            </div> */}
+                            </div>
                             <div className={styles.eventField}>
                                 <div className={styles.eventFieldLabel}>From: </div>
                                 <div className={styles.eventFieldInputContainer}>
@@ -262,15 +268,25 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
+                                <div className={styles.eventFieldLabel}>Price <span className={styles.priceFont}>(INR)</span>: </div>
+                                <div className={styles.eventFieldInputContainer}>
+                                    <input type='text'
+                                        value={event.price ? event.price : ''}
+                                        className={styles.eventFieldInput}
+                                        onChange={(e) => onChange({price: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.eventField}>
                                 <div className={styles.eventFieldLabel}>Category: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <select name="category"
-                                            selected
-                                            defaultValue={'none'}
+                                            default=''
                                             value={event.category ? event.category : ''}
                                             onChange={(e) => onChange({category: e.target.value})}
                                             className={styles.eventFieldInput}
                                         >
+                                            <option value="" disabled selected>select</option>
                                         {
                                             categoriesList.map((category, index) => {
                                                 return (

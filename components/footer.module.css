@@ -35,3 +35,9 @@
 .stackLink {
     color: white;
 }
+
+@media (max-width: 768px) {
+    .footerCard {
+        width: 80%;
+    }
+}

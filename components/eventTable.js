@@ -1,12 +1,19 @@
 import styles from './eventTable.module.css';
 import classNames from 'classnames';
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
+import EventCard from './eventCard';
+import EventTimeline from './eventTimeline'
 
-export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
+export default function EventTable ({NEXT_PUBLIC_BE_URL, propEventList}) {
 
     const [eventList, setEventList] = useState();
     var [filteredEventList, setFilteredEventList] = useState();
+    const [currentTab, setTab] = useState(0);
+    const [mousePos, setMousePos] = useState({});
+    const [clickPos, setClickPos] = useState({});
+    const [showInfoCard, setInfoCard] = useState(-1);
+    const myRef = useRef();
 
     const getHours = (dateStr) => {
         var hours = new Date(dateStr).getHours();
@@ -44,8 +51,20 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
 
     const getLink = (event) => {
         if(!event.link)
-            return '';
+            return 'javascript:void(0)';
         return event.link;
+    }
+
+    const getDateTitle = (event) => {
+        if(!event.from) {
+            return 'TBD';
+        }
+        
+        if(event.to && !((getDays(event.from)==getDays(event.to)) && (getMonth(event.from)==getMonth(event.to)))) {
+            return `${getDays(event.from)} ${getMonth(event.from)} - ${getDays(event.to)} ${getMonth(event.to)}`;
+        }
+
+        return `${getDays(event.from)} ${getMonth(event.from)}`;
     }
 
     const compareField = (filt, val) => {
@@ -78,80 +97,94 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL}) {
             element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
-    const sortEvents = (oldEventsList) => {
-        return oldEventsList.sort((event1, event2) => {
-            if(!event1.from && !event2.from)
-                return 1;
-            if(!event1.from)
-                return 1;
-            if(!event2.from)
-                return -1;
-
-            return event1.from <= event2.from ? -1: 1;
-        })
+    const onClickMore = (e, index) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setClickPos({...mousePos});
+        setInfoCard(index);
     }
-
-    useEffect(() => {
-        axios.get(`${NEXT_PUBLIC_BE_URL}/users`).then((res) => {
-            const sortedEventList = sortEvents(res.data);
-            // const sortedEventList = res.data;
-            setEventList(sortedEventList);
-            setFilteredEventList(sortedEventList);
-        })
-        .catch((err)=> {
-            console.error("error occurred during get: ",err);
-        });
-    }, []);
 
     const displayEvents = () => (
         <div className={styles.tableContainer}>
-        <div className={styles.tableSize}>
             <div className={styles.table}>
-                <div>
-                    {
+            {
                         filteredEventList && filteredEventList.map((eventData, index) => (
-                            <a className={styles.tableRow} key={index} target="_blank" href={getLink(eventData)} rel="noopener noreferrer" title={getLink(eventData)}>
-                                <div className={styles.dateCell}>{
-                                    eventData.from ?
-                                    `${getDays(eventData.from)} ${getMonth(eventData.from)}`
-                                    : 'TBD'
-                                }</div>
-                                <div className={styles.nameCell} title={eventData.name}>{eventData.name}</div>
-                                <div className={styles.venueCell} title={eventData.venue}>{eventData.venue}</div>
-                                <div className={styles.categoryCell} title={eventData.category}>{eventData.category}</div>
-                                {/* <div className={styles.categoryCell}>{eventData.contact}</div> */}
-                                {/* <div className={styles.timeCell}>{
-                                    `${getHours(eventData.from)}:${getMinutes(eventData.from)} ${getAMPM(eventData.from)} - ${getHours(eventData.to)}:${getMinutes(eventData.to)} ${getAMPM(eventData.to)}`
-                                }</div> */}
-                            </a>
+                            <EventCard eventData={eventData} index={index} onClickMore={onClickMore}/>
                         ))
                     }
-                </div>
             </div>
-        </div>
 
     </div>
     )
 
+    useEffect(() => {
+        // const sortedEventList = sortEvents(propEventList);
+        const sortedEventList = propEventList;
+        setEventList(sortedEventList);
+        setFilteredEventList(sortedEventList);
+    }, [propEventList]);
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+          setMousePos({ x: event.clientX, y: event.clientY });
+        };
+    
+        window.addEventListener('mousemove', handleMouseMove);
+    
+        function handleClickOutside(event) {
+          if (myRef.current && !myRef.current.contains(event.target)) {
+            setInfoCard(-1);
+          }
+        }
+  
+        document.addEventListener("mousedown", handleClickOutside);
+  
+      }, []);
+
     return (
         <div className={styles.tableSection} id='event-table'>
-                <div className={styles.tableTitleContainer}>
+            <div className={styles.tableBorder}>
+            <div className={styles.tableTitleContainer}>
                     <div className={styles.tableTitle}>SCHEDULE</div>
                 </div>
-                {/* <div className={styles.addEventContainer}>
-                    <button className={classNames('globalButton')} onClick={moveToRegister}>ADD YOUR EVENT</button>
-                </div> */}
-                {/* <div className={styles.searchContainer}>
-                    <input type='text'
-                        className={classNames('globalInput', styles.searchBar)}
-                        placeholder='Search'
-                        onChange={(e) => filterEvents(e.target.value)}
-                    />
-                </div> */}
-                
+                <div className={styles.tabContainer}>
+                    <div className={styles.tabList}>
+                        <div className={classNames(styles.tab, 
+                            {[styles.clickableTab]: currentTab != 0})
+                            } onClick={() =>setTab(0)}>EVENT</div>
+
+                        <div className={classNames(styles.tab,
+                            styles.timelineTab,
+                            {[styles.clickableTab]: currentTab != 1})
+                            } onClick={() =>setTab(1)}>TIMELINE</div>
+                    </div>
+                </div>
                 {
-                    displayEvents()
+                    !currentTab?
+                        displayEvents()
+                    :
+                    (
+                        <div className={styles.timelineContainer}>
+                            <div className={styles.timeline}>
+                                <EventTimeline eventList={propEventList} onClickMore={onClickMore}/>
+                            </div>
+                        </div>
+                    )
                 }
+                {
+                    showInfoCard!=-1?
+                    <div className={styles.contactCard}
+                        ref={myRef}
+                        style={{
+                            left: `${clickPos.x-100}px`,
+                            top: `${clickPos.y + 20}px`
+                        }}
+                    >
+                        {propEventList[showInfoCard].contact}
+                    </div>
+                    : ''
+                }
+            </div>
         </div>
     );
 }

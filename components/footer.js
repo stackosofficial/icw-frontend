@@ -7,8 +7,8 @@ export default function Footer () {
         <div className={styles.footerSection}>
             <div className={styles.footerCard}>
                 <div className={styles.footerText}>
-                    © 2022 India Blockchain Week. All Rights Reserved. 
-                    | Running on: <a href='https://www.stackos.io' target="_blank" rel="noopener noreferrer" className={styles.stackLink}>www.stackos.io</a>
+                    © 2022 www.IndiaBlockchainWeek.in. All Rights Reserved
+                    <span className={styles.stackLink}> | </span> Running on: <a href='https://www.stackos.io' target="_blank" rel="noopener noreferrer" className={styles.stackLink}>www.stackos.io</a>
                 </div>
                 <div className={styles.footerTwitterContainer}>
                     {/* <div className={styles.footerTwitterImage}>

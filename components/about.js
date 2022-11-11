@@ -11,7 +11,7 @@ export default function eventDescription () {
                 major crypto events in India. This time it is centered around
                 ETHIndia, Bangalore from from 26th November - 4th December 2022.
                 The week concludes with the ETHIndia on 4th December.
-                Expect a wide range of meetups, workshops, networking, drinks 
+                Expect a wide range of meetups, workshops, networking,
                 parties - creating unparalleled networking opportunities. 
                 Watch this space for continuous event updates taking place throughout the week.
                 </div>
