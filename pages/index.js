@@ -18,34 +18,30 @@ import axios from 'axios';
 
 export async function getStaticProps()
 {
-
   const env = {
-    NEXT_PUBLIC_BE_URL: process.env.NEXT_PUBLIC_BE_URL,
-    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-    NEXT_PUBLIC_TELEGRAM_LINK: process.env.NEXT_PUBLIC_TELEGRAM_LINK,
-    NEXT_PUBLIC_WHATSAPP_LINK: process.env.NEXT_PUBLIC_WHATSAPP_LINK,
+    NEXT_PUBLIC_BE_URL: process.env.NEXT_PUBLIC_BE_URL_EXTERNAL || '',
+    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
+    NEXT_PUBLIC_TELEGRAM_LINK: process.env.NEXT_PUBLIC_TELEGRAM_LINK || '',
+    NEXT_PUBLIC_WHATSAPP_LINK: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '',
   };
 
-  console.log("env: ",JSON.stringify(env));
-
   var eventList = [];
-  try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_BE_URL}/users`);
-    eventList = sortEvents(res.data);
-  }
-  catch(err) {
-    console.error(err);
+  if(process.env.NEXT_PUBLIC_BE_URL_INTERNAL) {
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BE_URL_INTERNAL}/users`);
+      eventList = sortEvents(res.data);
+    }
+    catch(err) {
+      console.error(err);
+    }
   }
 
   return {
     props: {
-      NEXT_PUBLIC_BE_URL: process.env.NEXT_PUBLIC_BE_URL,
-      NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-      NEXT_PUBLIC_TELEGRAM_LINK: process.env.NEXT_PUBLIC_TELEGRAM_LINK,
-      NEXT_PUBLIC_WHATSAPP_LINK: process.env.NEXT_PUBLIC_WHATSAPP_LINK,
+      ...env,
       eventList
     },
-    revalidate: 10
+    revalidate: 20
   }
 }
 
@@ -59,6 +55,14 @@ export default function Home({
 
   return (
     <div>
+        <Head>
+          <title>India Blockchain Week</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="description" content="India Blockchain Week is a week of various independently organised side events around major crypto events in India.
+            Don't miss out and get updated on the latest major crypto events!"
+            key="desc"
+            />
+        </Head>
       <div className={utilStyles.backgroundImage}>
         {/* <Image
           src={landscapePic}

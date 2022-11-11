@@ -109,7 +109,7 @@ export default function EventTable ({NEXT_PUBLIC_BE_URL, propEventList}) {
             <div className={styles.table}>
             {
                         filteredEventList && filteredEventList.map((eventData, index) => (
-                            <EventCard eventData={eventData} index={index} onClickMore={onClickMore}/>
+                            <EventCard eventData={eventData} index={index} onClickMore={onClickMore} disableGlow={!eventData.link}/>
                         ))
                     }
             </div>

@@ -2,7 +2,7 @@
 .eventSection {
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: #fafafa;
     padding-top: 30px;
     padding-bottom: 20px;
 }
@@ -127,3 +127,6 @@
     max-height: 100px;
 }
 
+.reqField {
+    color: red;
+}

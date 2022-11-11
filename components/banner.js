@@ -17,9 +17,9 @@ export default function Banner() {
                         <div>Bangalore</div>
                     </div>
                     <div className={styles.title}>
-                        <div className={styles.titleWord}>INDIA</div>
-                        <div className={styles.titleWord}>BLOCKCHAIN</div>
-                        <div className={styles.titleWord}>WEEK</div>
+                        <h1 className={styles.titleWord}>INDIA</h1>
+                        <h1 className={styles.titleWord}>BLOCKCHAIN</h1>
+                        <h1 className={styles.titleWord}>WEEK</h1>
                     </div>
                     <div className={styles.ownerLineContainer}>
                         <div className={styles.ownerLine}>&nbsp;</div>

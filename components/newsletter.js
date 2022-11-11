@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
-import { SocialIcon } from 'react-social-icons';
 import {FaWhatsapp} from 'react-icons/fa';
 import {FaTelegram} from 'react-icons/fa';
 

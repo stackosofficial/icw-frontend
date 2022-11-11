@@ -232,23 +232,13 @@ export default function Timeline ({eventList, onClickMore}) {
 
       document.addEventListener("mousedown", handleClickOutside);
 
-      let smallDate = new Date();
-      let bigDate = new Date();
-      for(var i = 0; i < eventList.length; i++)
-      {
-        const event = eventList[i];
-        if(!event.from)
-            continue;
+      const fromDates = eventList.filter((event) => event.from != null).map((event)=> new Date(event.from));
+      const toDates = eventList.filter((event) => event.to != null).map((event) => new Date(event.to));
 
-            smallDate = new Date(Math.min(smallDate, new Date(event.from)));
-            bigDate = new Date(Math.max(bigDate, new Date(event.from)));
 
-        if(event.to) {
-            bigDate = new Date(Math.max(bigDate, new Date(event.to)));
-        }
-      }
-
-      console.log("values dates ", smallDate, bigDate);
+      var smallDate=new Date(Math.min.apply(null, fromDates));
+      var bigDate=new Date(Math.max.apply(null, fromDates));
+      bigDate=new Date(Math.max.apply(null, toDates));
 
       setEventStartDate(smallDate);
       setTotalDays(getNumDays(smallDate, bigDate) + 1);
@@ -269,7 +259,7 @@ export default function Timeline ({eventList, onClickMore}) {
                         left: clickPos.x
                     }}
                     >
-                        <EventCard eventData={cardEvent} index={eventIndex} onClickMore={onClickMore}/>
+                        <EventCard eventData={cardEvent} index={eventIndex} onClickMore={onClickMore} disableGlow={!cardEvent.link}/>
                     </div>
                 : ''
             }

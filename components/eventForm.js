@@ -55,6 +55,21 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
 
     const validate = () =>
     {
+        if(!event.name) {
+            setErrorMessage("Please enter the event name.");
+            return false;
+        }
+
+        if(!event.createdByEmail) {
+            setErrorMessage("Please enter your email.");
+            return false;
+        }
+
+        if(!event.phoneNo) {
+            setErrorMessage("Please enter your phone number.");
+            return false;
+        }
+
         if(event.name.length > 32) {
             setErrorMessage("name should be less than 32 characters.");
             return false;
@@ -87,15 +102,11 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             }
         }
         
-        if(event.link && !stringIsAValidUrl(event.link, ['http', 'https'])) {
-            setErrorMessage("Link is not a valid URL. Enter a HTTP/HTTPS link.");
-            return false;
-        }
+        // if(event.link && !stringIsAValidUrl(event.link, ['http', 'https'])) {
+        //     setErrorMessage("Link is not a valid URL. Enter a HTTP/HTTPS link.");
+        //     return false;
+        // }
 
-        if(!event.createdByEmail) {
-            setErrorMessage('Please enter the email.');
-            return false;
-        }
         if(!event.createdByEmail.match('@')) {
             setErrorMessage('Please enter a correct email.');
             return false;
@@ -124,12 +135,12 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         event = {...event, ...change};
         setEvent(event);
 
-        if(event.name && event.createdByEmail && isPhoneNo(event.phoneNo)) {
-            setDisabled(false);
-        }
-        else {
-            setDisabled(true);
-        }
+        // if(event.name && event.createdByEmail && isPhoneNo(event.phoneNo)) {
+        //     setDisabled(false);
+        // }
+        // else {
+        //     setDisabled(true);
+        // }
     }
 
     const onSubmit = () => {
@@ -187,7 +198,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                     <div className={styles.eventForm}>
                         <div className={styles.eventFieldList}>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Name*: </div>
+                                <div className={styles.eventFieldLabel}>Name<span className={styles.reqField}>*</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.name ? event.name : ''}
@@ -248,7 +259,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Email*: </div>
+                                <div className={styles.eventFieldLabel}>Email<span className={styles.reqField}>*</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.createdByEmail ? event.createdByEmail : ''}
@@ -258,7 +269,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Ph No*: </div>
+                                <div className={styles.eventFieldLabel}>Ph No<span className={styles.reqField}>*</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.phoneNo ? event.phoneNo : ''}
@@ -311,7 +322,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                             <button
                                 type='button'
                                 className={classNames('globalButton')}
-                                disabled={isDisabled}
+                                // disabled={isDisabled}
                                 onClick={onSubmit}
                             >SUBMIT</button>
                         </div>

@@ -3,7 +3,7 @@ import { getDays, getMonth } from './common';
 import styles from './eventCard.module.css';
 import {useState} from 'react';
 
-export default function EventCard({eventData, index, onClickMore}) {
+export default function EventCard({eventData, index, onClickMore, disableGlow}) {
 
     const getLink = (link) => {
         if(!link)
@@ -25,7 +25,7 @@ export default function EventCard({eventData, index, onClickMore}) {
 
 
     return (
-        <div className={classNames(styles.eventCard, {[styles.eventCardFade]: !eventData.link}, styles.eventCardAnim)}
+        <div className={classNames(styles.eventCard, {[styles.eventCardFade]: !eventData.link}, {[styles.eventCardAnim]: !disableGlow})}
         >
         <a className={styles.eventCardLink}
             key={index} target={eventData.link ? "_blank" : ''}
@@ -35,28 +35,30 @@ export default function EventCard({eventData, index, onClickMore}) {
         >
             <div className={styles.dateCell}>{getDateTitle(eventData)}</div>
             <div className={classNames(styles.dateCell)}></div>
-            <div className={styles.nameCell} title={eventData.name}>{eventData.name}</div>
+            <h1 className={styles.nameCell} title={eventData.name}>{eventData.name}</h1>
             <div className={styles.venueCell} title={eventData.venue}>{eventData.venue}</div>
             <div className={styles.categoryCell} title={eventData.category}>{eventData.category}</div>
-            <div className={styles.moreSection}>
-                {
-                    eventData.price?
-                    <div className={styles.priceSection}>
-                        <div className={styles.priceText}>&#8377;10000</div>
-                    </div>
-                    : ''
-                }
-                {
-                    eventData.contact?
-                        <div className={styles.more}>
-                            <button className={styles.moreText} onClick={(e)=>onClickMore(e, index)}>
-                                Info
-                            </button>
-
+            <div className={styles.bottomSection}>
+                <div className={styles.moreSection}>
+                    {
+                        eventData.price?
+                        <div className={styles.priceSection}>
+                            <div className={styles.priceText}>&#8377;10000</div>
                         </div>
-                    : ''
-                }
+                        : ''
+                    }
+                    {
+                        eventData.contact?
+                            <div className={styles.more}>
+                                <button className={styles.moreText} onClick={(e)=>onClickMore(e, index)}>
+                                    Info
+                                </button>
 
+                            </div>
+                        : ''
+                    }
+
+                </div>
             </div>
         </a>
 

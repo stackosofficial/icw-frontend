@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './partners.module.css'
 import decodeWeb3 from '../public/images/partners/decodeWeb3.png'
 import HydDAO from '../public/images/partners/Hyd_Dao.jpg'
-import Web3Punjab from '../public/images/partners/Web3_Panjab.jpg'
+import Web3Punjab from '../public/images/partners/web3pb.png'
 import StackOS from '../public/images/partners/StackOS.png'
 import PuneDAO from '../public/images/partners/PuneDAO.png'
 import Doodhwala from '../public/images/partners/doodhwala.png'

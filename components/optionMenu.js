@@ -16,7 +16,6 @@ export default function OptionMenu ({optionList, isRight, alignX}) {
 
     useEffect(()=>{
         if(isOptionsOpen && isRight) {
-            console.log(myRef.current.offsetWidth)
             setRightStyle(
                 {
                     color: 'red',

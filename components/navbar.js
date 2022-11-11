@@ -16,7 +16,6 @@ export default function Navbar () {
         const resizeFunc = () => {
             if(window && window.innerWidth < 768) {
                 setMobile(true);
-                console.log("ismobile true");
             }
             else {
                 setMobile(false);
