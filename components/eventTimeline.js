@@ -10,7 +10,7 @@ export default function Timeline ({eventList, onClickMore}) {
     const [clickPos, setClickPos] = useState({})
     const [eventIndex, setEventIndex] = useState(-1);
     const [cardEvent, setCardEvent] = useState(null);
-    const [mousePos, setMousePos] = useState({});
+    // const [mousePos, setMousePos] = useState({});
     const [totalDays, setTotalDays] = useState(0);
     const [eventStartDate, setEventStartDate] = useState(new Date());
 
@@ -49,63 +49,6 @@ export default function Timeline ({eventList, onClickMore}) {
         return cells;
     }
 
-    const createEventBins = () => {
-        let rowBin = [[]];
-        for(var ev = 0; ev < eventList.length; ev++) {
-            const event = eventList[ev];
-
-            if(!event.from)
-                continue;
-
-            var curRowID = 0;
-            var binFound = false;
-            while(curRowID < rowBin.length)
-            {
-                var curBinValid = true;
-                for(var i = 0; i < rowBin[curRowID].length; i++)
-                {
-                    const compEvent = eventList[rowBin[curRowID][i]];
-                    if(!compEvent.from) {
-                        continue;
-                    }
-
-                    let toDate = compEvent.to;
-                    if(!toDate) {
-                        toDate = compEvent.from;
-                    }
-
-                    if(event.from >= compEvent.from && event.from <= compEvent.to) {
-                        curBinValid = false;
-                        break;
-                    }
-
-                    if(!event.to) {
-                        continue;
-                    }
-
-                    if(event.to >= compEvent.from && event.to <= compEvent.to) {
-                        curBinValid = false;
-                        break;
-                    }   
-
-                }
-
-                if(curBinValid) {
-                    binFound = true;
-                    rowBin[curRowID].push(ev);
-                    break;
-                }
-                curRowID++;
-            }
-
-            if(!binFound) {
-                rowBin.push([ev]);
-            }
-
-        }
-        return rowBin;
-    }
-
     const remTime = (date) => {
         return new Date(
             date.getFullYear(),
@@ -128,10 +71,83 @@ export default function Timeline ({eventList, onClickMore}) {
         return false;
     }
 
-    const onClick = (event, index) => {
+    const getEventDate = (dateStr) => {
+        return remTime(new Date(dateStr));
+    }
+
+    const createEventBins = () => {
+        let rowBin = [[]];
+        for(var ev = 0; ev < eventList.length; ev++) {
+            const event = eventList[ev];
+
+            if(!event.from)
+                continue;
+
+            let curFromDate = getEventDate(event.from);
+            let curToDate = getEventDate(event.to);
+
+            var curRowID = 0;
+            var binFound = false;
+            while(curRowID < rowBin.length)
+            {
+                var curBinValid = true;
+                for(var i = 0; i < rowBin[curRowID].length; i++)
+                {
+                    const compEvent = eventList[rowBin[curRowID][i]];
+                    if(!compEvent.from) {
+                        continue;
+                    }
+                    
+                    let toDate = compEvent.to;
+                    if(!toDate) {
+                        toDate = compEvent.from;
+                    }
+
+                    let compFromDate = getEventDate(compEvent.from);
+                    let compToDate = getEventDate(toDate);
+
+                    if(curFromDate >= compFromDate && curFromDate <= compToDate) {
+                        curBinValid = false;
+                        break;
+                    }
+
+                    if(!event.to) {
+                        continue;
+                    }
+
+                    if(curToDate >= compFromDate && curToDate <= compToDate) {
+                        curBinValid = false;
+                        break;
+                    }   
+
+                }
+
+                if(curBinValid) {
+                    binFound = true;
+                    rowBin[curRowID].push(ev);
+                    break;
+                }
+                curRowID++;
+            }
+
+            if(!binFound) {
+                rowBin.push([ev]);
+            }
+
+        }
+        return rowBin;
+    }
+
+    const onClick = (e, event, index) => {
         setCardEvent(event);
         setEventIndex(index);
-        setClickPos({x: mousePos.x, y: mousePos.y})
+        var px = e.pageX;
+        var py = e.pageY;
+        if((window.innerWidth - 300) < e.clientX) {
+            px -= (e.clientX - window.innerWidth + 350);
+        }
+
+        setClickPos({x: px, y: py});
     }
 
     const createCells = () => 
@@ -179,7 +195,7 @@ export default function Timeline ({eventList, onClickMore}) {
                                     style={{
                                             backgroundColor: categoriesColor[event.category]? categoriesColor[event.category]: 'grey'
                                     }}
-                                    onClick={()=>onClick(event, 1)}
+                                    onClick={(e)=>onClick(e, event, 1)}
                                 >
                                     <span>{event.name}</span>
                                 </div>
@@ -217,11 +233,11 @@ export default function Timeline ({eventList, onClickMore}) {
     }
 
     useEffect(() => {
-      const handleMouseMove = (event) => {
-        setMousePos({ x: event.clientX, y: event.clientY });
-      };
+    //   const handleMouseMove = (event) => {
+    //     setMousePos({ x: event.clientX, y: event.clientY });
+    //   };
   
-      window.addEventListener('mousemove', handleMouseMove);
+    //   window.addEventListener('mousemove', handleMouseMove);
   
       function handleClickOutside(event) {
         if (myRef.current && !myRef.current.contains(event.target)) {
@@ -254,7 +270,7 @@ export default function Timeline ({eventList, onClickMore}) {
             {
                 cardEvent?
                     <div ref={myRef} style={{
-                        position: 'fixed',
+                        position: 'absolute',
                         top: clickPos.y,
                         left: clickPos.x
                     }}

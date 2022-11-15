@@ -11,7 +11,7 @@ import SignupBar from '../components/signupbar';
 import MediaPartners from '../components/partners'
 import Footer from '../components/footer';
 import utilStyles from '../styles/utils.module.css';
-import landscapePic from '../public/images/India_Crypto_Week_V2.0.png';
+import landscapePic from '../public/images/India_Crypto_Week_V3.0.png';
 import EventTimeline from '../components/eventTimeline';
 import { sortEvents } from '../components/common';
 import axios from 'axios';
@@ -41,7 +41,7 @@ export async function getStaticProps()
       ...env,
       eventList
     },
-    revalidate: 20
+    revalidate: 10
   }
 }
 
@@ -70,7 +70,7 @@ export default function Home({
           alt="Picture of landscape"
         /> */}
         <img
-          src='images/India_Crypto_Week_V2.0.png'
+          src='images/India_Crypto_Week_V3.0.png'
           className='globalBackgroundImage'
         />
       </div>
@@ -87,7 +87,7 @@ export default function Home({
       {/* <EventTimeline/> */}
       <EventTable NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL} propEventList={eventList}/>
       <EventForm siteKey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY} NEXT_PUBLIC_BE_URL={NEXT_PUBLIC_BE_URL}/>
-      <MediaPartners/>
+      <MediaPartners NEXT_PUBLIC_WHATSAPP_LINK={NEXT_PUBLIC_WHATSAPP_LINK}/>
       <Footer/>
     </div>
   )

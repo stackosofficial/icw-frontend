@@ -8,13 +8,26 @@
     justify-content: center;
 }
 
+.navBar {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom:8px;
+    /* height: 50px; */
+}
+
 .navbarButton {
-    padding: 10px;
     cursor: pointer;
-    overflow: hidden;
     /* text-overflow: elipsis; */
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin: auto;
     white-space: nowrap;
     color: rgba(27, 27, 27, 0.95);
+}
+
+.paddingLeft {
+    /* padding-left: 30px; */
 }
 
 .navbarButton:hover {

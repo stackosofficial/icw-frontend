@@ -7,7 +7,7 @@
 
 .titleCard {
   background-color: rgba(27,27,27, 0.87);
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
   color: white;
   /* padding: 80px; */
   padding-left: 70px;

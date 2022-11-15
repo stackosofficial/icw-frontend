@@ -5,9 +5,11 @@
     border: 1px solid #aaff00;
     width: 250px;
     margin: 20px;
-    backdrop-filter: blur(5px);
-    background-color: rgba(27, 27, 27, 0.5);
+    /* backdrop-filter: blur(5px); */
+    background-color: rgba(27, 27, 27, 1);
     user-select: text;
+    color: white;
+
 }
 
 .eventCardLink {
@@ -22,7 +24,7 @@
 }
 
 .eventCard:hover {
-    background-color: rgba(27, 27, 27, 0.5);
+    background-color: rgb(32, 32, 32);
 }
 
 .eventCardAnim:hover {
@@ -32,17 +34,15 @@
 }
 
 @keyframes cardExpand {
-    from {
-        transform: scale(1);
-    }
     to {
-        box-shadow: 0px 0px 10px 4px #aaff00;
+        box-shadow: 0px 0px 2px 3px #aaff00;
         /* transform: scale(1.05); */
     }
 }
 
-.eventCardFade {
-    opacity: 0.7;
+.cardContent {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .bottomSection {
@@ -62,34 +62,45 @@
     margin-bottom: 8px;
 }
 
+.dateCell:hover {
+    text-decoration: none;
+}
+
 .nameCell {
     text-align: center;
     margin: auto;
-    font-family: 'Bebas';
-    font-weight: normal;
-    font-size: 22px;
+    color: white;
+    /* font-family: 'Bebas'; */
+    font-family: 'Avenir';
+    font-weight: bold;
+    font-size: 12px;
     letter-spacing: 1px;
     padding-bottom: 8px;
+    padding-top: 10px;
     width: 100%;
-    margin: 0px;
+}
+
+.nameCellLink {
+    color: white;
 }
 
 .venueCell {
     width: 100%;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     margin: auto;
     font-family: 'Avenir-light';
-    font-size: 18px;
+    font-size: 12px;
 }
 
 .categoryCell {
     width: 100%;
-    padding-left: 10px;
-    margin: auto;
+    /* padding-left: 10px; */
+    /* margin: auto; */
     font-family: 'Avenir-light';
     font-style: italic;
-    font-size: 15px;
+    font-size: 12px;
     margin-top: 10px;
+    padding-bottom: 10px;
     color: #aaff00;
 }
 
@@ -101,7 +112,7 @@
 
 .priceSection {
     border-top: 1px solid #aaff00;
-    border-right: 1px solid #aaff00;
+    border-left: 1px solid #aaff00;
     text-align:center;
     padding: 4px 10px 2px 8px;
     /* margin: auto; */
@@ -117,7 +128,8 @@
 .more {
     display: flex;
     width: 100%;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .moreText {
@@ -129,9 +141,98 @@
     color: white;
     /* text-decoration: underline; */
     padding: 4px 6px 4px 8px;
+    position: relative;
 }
 
 .moreText:hover {
     background-color: rgba(0, 0, 0, 0.6);
     text-decoration: underline;
 }
+
+.moreLeft {
+    display: flex;
+}
+
+.moreRight {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.moreBottom {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+}
+
+.contactCard {
+
+    margin: 0 auto;
+    position: fixed;
+    display:none;
+
+    border: 2px solid #aaff00;
+    color: white;
+    background-color: rgba(27, 27, 27, 1);
+    user-select: text;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: consolas;
+    font-size: 15px;
+    white-space: break-spaces;
+    /* word-wrap: break-word; */
+    min-width: 150px;
+    text-align: left;
+    padding: 20px;
+    overflow-x: scroll;
+    left: -4px;
+}
+
+.moreText:hover .contactCard {
+    display:block;
+}
+
+@media (min-width: 900px) {
+    .contactCard {
+        min-width: 350px;
+    }
+}
+
+@media (max-width: 900px) {
+    .contactCard {
+        min-width: 300px;
+    }
+}
+
+.dropIcon {
+    width: 16px;
+    height: 16px;
+}
+
+
+.eventCardFade {
+    border: 1px solid #aaff0088;
+    background-color: rgba(27, 27, 27, 1);
+}
+
+.dateFade {
+    background-color: #aaff0088;
+}
+
+.nameFade {
+    color: rgba(255,255,255,0.8);
+}
+
+.venueFade {
+    color: rgba(255,255,255,0.8);
+}
+
+.categoryFade {
+    color: #aaff0088;
+}
+
+.priceFade {
+    border-top: 1px solid #aaff0088;
+    border-left: 1px solid #aaff0088;
+    color: rgba(255, 255, 255, 0.8);
+}
+

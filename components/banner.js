@@ -54,8 +54,8 @@ export default function Banner() {
                                         src={stackosPic}
                                         // width={140}
                                         // height={30}
-                                        width={110}
-                                        height={22}
+                                        width={115}
+                                        height={26}
                                         alt="Picture of landscape"
                                     /> 
                                     {/* <img

@@ -95,10 +95,16 @@ img {
 
 .globalInput {
   height: 32px;
+  font-family: 'Avenir';
+  padding: 8px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(8, 8, 8, 0.16) 0px 0px 0px 1px, rgba(8, 8, 8, 0.08) 0px 2px 5px 0px;
   border: 0px none;
   border-radius: 5px;
   width: 100%;
+}
+
+.globalInput[type="text"] {
+  margin: auto;
 }
 
 .globalButton {

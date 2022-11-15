@@ -42,17 +42,18 @@
 
 .eventField {
     display: flex;
+    justify-content: center;
 }
 
 .eventFieldLabel {
-    width: 85px;
+    width: 100px;
     /* font-size: 18px; */
 }
 
 .eventFieldInputContainer {
-    padding-left: 20px;
+    padding-left: 10px;
     padding-bottom: 20px;
-    width: 70%;
+    width: 200px;
 }
 
 .eventFieldInput {
@@ -64,6 +65,14 @@
 }
 
 .eventFieldInput[type="text"] {
+    font-family: 'Avenir';
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.eventFieldInput[type="date"] {
+    font-family: 'Avenir';
     box-sizing: border-box;
     padding-left: 10px;
     font-size: 15px;

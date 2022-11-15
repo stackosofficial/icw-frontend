@@ -70,12 +70,12 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             return false;
         }
 
-        if(event.name.length > 32) {
+        if(event.name.length > 128) {
             setErrorMessage("name should be less than 32 characters.");
             return false;
         }
 
-        if(event.venue && event.venue.length > 32) {
+        if(event.venue && event.venue.length > 128) {
             setErrorMessage("Venue should be less than 32 characters.");
             return false;
         }
@@ -117,10 +117,10 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             return false;
         }
 
-        if(event.price && isNaN(event.price)) {
-            setErrorMessage('Price should be a number.');
-            return false;
-        }
+        // if(event.price && isNaN(event.price)) {
+        //     setErrorMessage('Price should be a number.');
+        //     return false;
+        // }
 
         const token = captchaRef.current.getValue();
         if(!token || !token.length) {
@@ -207,7 +207,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Link: </div>
+                                <div className={styles.eventFieldLabel}>Event URL: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.link ? event.link : ''}

@@ -1,17 +1,20 @@
 import Image from 'next/image';
-import styles from './partners.module.css'
-import decodeWeb3 from '../public/images/partners/decodeWeb3.png'
-import HydDAO from '../public/images/partners/Hyd_Dao.jpg'
-import Web3Punjab from '../public/images/partners/web3pb.png'
-import StackOS from '../public/images/partners/StackOS.png'
-import PuneDAO from '../public/images/partners/PuneDAO.png'
-import Doodhwala from '../public/images/partners/doodhwala.png'
-import QuilAudits from '../public/images/partners/QuillAudits_logo.png'
-import CredSheilds from '../public/images/partners/credShields.png'
-import ProductHouse from '../public/images/partners/productHouse.png'
-import Web3Events from '../public/images/partners/web3Events.png'
+import styles from './partners.module.css';
+import decodeWeb3 from '../public/images/partners/decodeWeb3.png';
+import HydDAO from '../public/images/partners/Hyd_Dao.jpg';
+import Web3Punjab from '../public/images/partners/web3pb.png';
+import StackOS from '../public/images/partners/StackOS.png';
+import PuneDAO from '../public/images/partners/PuneDAO.png';
+import Doodhwala from '../public/images/partners/doodhwala.png';
+import QuilAudits from '../public/images/partners/QuillAudits_logo.png';
+import CredSheilds from '../public/images/partners/credShields.png';
+import ProductHouse from '../public/images/partners/productHouse.png';
+import Web3Events from '../public/images/partners/web3Events.png';
+import BuildersTribe from '../public/images/partners/BuildersTribe_logo.png';
+import CoinGabbar from '../public/images/partners/CoinGabbar_logo.png';
+import Web3Chennai from '../public/images/partners/Web3Chennai_logo.png';
 
-export default function Partners () {
+export default function Partners ({NEXT_PUBLIC_WHATSAPP_LINK}) {
     const width = 200;
     const height = 160;
     return (
@@ -19,6 +22,15 @@ export default function Partners () {
             <div className={styles.mediaCard}>
                 <div className={styles.mediaColumn}>
                     <div className={styles.mediaTitle}>FEATURED PARTNERS</div>
+                    <div className={styles.linkContainer}>
+                        <a
+                        href={NEXT_PUBLIC_WHATSAPP_LINK ? NEXT_PUBLIC_WHATSAPP_LINK : ''}
+                        target='_blank'
+                        className={styles.mediaLink}>
+                            Want to partner with us?
+                        </a>
+                    </div>
+
                     <div className={styles.mediaCenter}>
                         <div className={styles.mediaRow}>
                         <div className={styles.mediaPic}>
@@ -96,6 +108,30 @@ export default function Partners () {
                             <div className={styles.mediaPic}>
                                 <Image
                                     src={Web3Events}
+                                    width={225}
+                                    height={150}
+                                    alt="Picture of landscape"
+                                    />       
+                            </div>
+                            <div className={styles.mediaPic}>
+                                <Image
+                                    src={BuildersTribe}
+                                    width={225}
+                                    height={150}
+                                    alt="Picture of landscape"
+                                    />       
+                            </div>
+                            <div className={styles.mediaPic}>
+                                <Image
+                                    src={CoinGabbar}
+                                    width={225}
+                                    height={150}
+                                    alt="Picture of landscape"
+                                    />       
+                            </div>
+                            <div className={styles.mediaPic}>
+                                <Image
+                                    src={Web3Chennai}
                                     width={225}
                                     height={150}
                                     alt="Picture of landscape"

@@ -33,7 +33,8 @@
 
 .rowList {
     display: flex;
-    font-family: 'Bebas';
+    font-family: 'Avenir';
+    font-weight: bold;
     color: white;
 }
 

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
-import {FaWhatsapp} from 'react-icons/fa';
+import {RiWhatsappFill} from 'react-icons/ri';
 import {FaTelegram} from 'react-icons/fa';
 
 export default function Newsletter (
@@ -98,7 +98,7 @@ export default function Newsletter (
                                             className={styles.navLink}
                                         >
                                             <div className={styles.navCell}>
-                                                <FaWhatsapp
+                                                <RiWhatsappFill
                                                     className={styles.iconClass}
                                                 />
                                                 <span

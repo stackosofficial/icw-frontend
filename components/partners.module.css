@@ -21,6 +21,27 @@
     letter-spacing: 3px;
 }
 
+.linkContainer {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.mediaLink {
+    text-align: center;
+    font-family: 'Avenir';
+    font-weight: bold;
+    color: rgba(27, 27, 27, 0.95);
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.mediaLink:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+
 .mediaCenter {
     display: flex;
     justify-content: center;
