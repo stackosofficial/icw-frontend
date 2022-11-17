@@ -46,7 +46,9 @@
 }
 
 .eventFieldLabel {
-    width: 100px;
+    width: 120px;
+    font-size: 18px;
+    line-height: 18px;
     /* font-size: 18px; */
 }
 

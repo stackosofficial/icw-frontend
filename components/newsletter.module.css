@@ -190,6 +190,11 @@
     /* margin-left: 20px; */
 }
 
+.whatsappClass {
+    width: 36px;
+    height: 36px;
+}
+
 .iconClass {
     /* background-color: rgba(27, 27, 27, 0.95); */
     width: 32px;

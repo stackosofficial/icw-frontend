@@ -71,17 +71,17 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
         }
 
         if(event.name.length > 128) {
-            setErrorMessage("name should be less than 32 characters.");
+            setErrorMessage("name should be less than 129 characters.");
             return false;
         }
 
         if(event.venue && event.venue.length > 128) {
-            setErrorMessage("Venue should be less than 32 characters.");
+            setErrorMessage("Venue should be less than 129 characters.");
             return false;
         }
 
         if(event.createdByEmail.length > 254) {
-            setErrorMessage("Email length is too big.");
+            setErrorMessage("Email length less than 255 characters.");
             return false;
         }
 
@@ -112,10 +112,10 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
             return false;
         }
 
-        if(!isPhoneNo(event.phoneNo)) {
-            setErrorMessage('Please enter a valid phone No.');
-            return false;
-        }
+        // if(!isPhoneNo(event.phoneNo)) {
+        //     setErrorMessage('Please enter a 10 digit phone number (without spaces).');
+        //     return false;
+        // }
 
         // if(event.price && isNaN(event.price)) {
         //     setErrorMessage('Price should be a number.');
@@ -198,7 +198,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                     <div className={styles.eventForm}>
                         <div className={styles.eventFieldList}>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Name<span className={styles.reqField}>*</span>: </div>
+                                <div className={styles.eventFieldLabel}>Event Name<span className={styles.reqField}>*</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.name ? event.name : ''}
@@ -228,7 +228,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>From: </div>
+                                <div className={styles.eventFieldLabel}>Event From: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='date'
                                         value={event.from ? event.from : ''}
@@ -238,7 +238,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>To: </div>
+                                <div className={styles.eventFieldLabel}>Event To: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='date'
                                         disabled={!event.from}
@@ -249,7 +249,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Venue: </div>
+                                <div className={styles.eventFieldLabel}>Event Venue: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.venue ? event.venue : ''}
@@ -259,7 +259,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Email<span className={styles.reqField}>*</span>: </div>
+                                <div className={styles.eventFieldLabel}>Your Email<span className={styles.reqField}>*</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.createdByEmail ? event.createdByEmail : ''}
@@ -269,7 +269,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Ph No<span className={styles.reqField}>*</span>: </div>
+                                <div className={styles.eventFieldLabel}>Your Ph No<span className={styles.reqField}>*</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.phoneNo ? event.phoneNo : ''}
@@ -279,7 +279,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Price <span className={styles.priceFont}>(INR)</span>: </div>
+                                <div className={styles.eventFieldLabel}>Event Price <span className={styles.priceFont}>(INR)</span>: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <input type='text'
                                         value={event.price ? event.price : ''}
@@ -289,7 +289,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                 </div>
                             </div>
                             <div className={styles.eventField}>
-                                <div className={styles.eventFieldLabel}>Category: </div>
+                                <div className={styles.eventFieldLabel}>Event Type: </div>
                                 <div className={styles.eventFieldInputContainer}>
                                     <select name="category"
                                             default=''
