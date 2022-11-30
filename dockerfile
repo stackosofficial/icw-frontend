@@ -26,6 +26,10 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+ENV NEXT_PUBLIC_BE_URL_INTERNAL=https://be.indiablockchainweek.in
+ENV NEXT_PUBLIC_BE_URL_EXTERNAL=https://be.indiablockchainweek.in
+ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=6Le5W-giAAAAAF4C_gJtu3MwVrPhkkcUSDHVFXxd
+
 RUN yarn build
 
 # If using npm comment out above and use below instead

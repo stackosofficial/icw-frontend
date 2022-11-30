@@ -219,4 +219,8 @@
     .description {
         font-size: 20px;
     }
+
+    .navCell {
+        padding-bottom: 15px;
+    }
 }

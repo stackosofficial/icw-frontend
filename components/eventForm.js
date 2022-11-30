@@ -297,7 +297,7 @@ export default function EventForm ({siteKey, NEXT_PUBLIC_BE_URL}) {
                                             onChange={(e) => onChange({category: e.target.value})}
                                             className={styles.eventFieldInput}
                                         >
-                                            <option value="" disabled selected>select</option>
+                                            <option key={0} value="" disabled selected>select</option>
                                         {
                                             categoriesList.map((category, index) => {
                                                 return (

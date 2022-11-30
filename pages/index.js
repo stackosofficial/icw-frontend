@@ -45,6 +45,14 @@ export async function getStaticProps()
   }
 }
 
+const googleScript = () => {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NM1BGZ5S64');
+}
+
 export default function Home({
     eventList,
     NEXT_PUBLIC_BE_URL,
@@ -55,20 +63,8 @@ export default function Home({
 
   return (
     <div>
-        <Head>
-          <title>India Blockchain Week</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content="India Blockchain Week is a week of various independently organised side events around major crypto events in India.
-            Don't miss out and get updated on the latest major crypto events!"
-            key="desc"
-            />
-        </Head>
+
       <div className={utilStyles.backgroundImage}>
-        {/* <Image
-          src={landscapePic}
-          fill={true}
-          alt="Picture of landscape"
-        /> */}
         <img
           src='images/India_Crypto_Week_V3.0.png'
           className='globalBackgroundImage'

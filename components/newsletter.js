@@ -99,7 +99,7 @@ export default function Newsletter (
                                         >
                                             <div className={styles.navCell}>
                                                 <RiWhatsappFill
-                                                    className={styles.iconClass}
+                                                    className={styles.whatsappClass}
                                                 />
                                                 <span
                                                     

@@ -53,8 +53,8 @@ export default function EventCard({eventData, index, disableGlow, onClickMore}) 
                 className={classNames(styles.dateCell, {[styles.dateFade]: !eventData.link})}
                 // className={styles.nameCellLink}
                 key={index} target={eventData.link ? "_blank" : ''}
-                // href={getLink(eventData.link)}
-                href={'https://www.test.com'}
+                href={getLink(eventData.link)}
+                // href={'https://www.test.com'}
                 rel="noopener noreferrer"
                 title={getLink(eventData.link)}
                 >
